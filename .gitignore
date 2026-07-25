@@ -4,3 +4,5 @@ week4-home-story/scenes/
 week4-home-story/fonts/
 week4-home-story/source/
 week4-neural-networks/data/
+__pycache__/
+.pytest_cache/

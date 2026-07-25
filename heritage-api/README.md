@@ -128,3 +128,39 @@ curl http://localhost:5000/api/stats
 - **NeRF** (Neural Radiance Fields): Photorealistic archival renders, GPU required
 - **3DGS** (3D Gaussian Splatting): Real-time explorable worlds, PMW primary target
 - **MiDaS** (Monocular Depth): Quick scan from a single photo, no GPU needed
+
+---
+
+## Extension Sprint 3: automated test suite (before / after)
+
+**Before:** zero automated tests existed for any of the 7 endpoints. Confirmed directly, not assumed:
+
+```
+$ python -m pytest --collect-only
+collected 0 items
+no tests collected in 0.10s
+```
+
+Every route (`/api/health`, `/api/sites`, `/api/sites/<id>`, `/api/sites/<id>/pointcloud`, `/api/reconstruct`, `/api/methods`, `/api/stats`, plus the two frontend routes) had no coverage at all, every error branch already written into `app.py` (unknown site returns 404, too few photos returns 422, missing body returns 400, unknown method returns 400) was completely unverified.
+
+**After:** [`tests/test_app.py`](tests/test_app.py), 22 real test cases covering the happy path and every error branch for every endpoint, using Flask's own test client, no live server needed.
+
+```
+$ python -m pytest tests/ -v
+collected 22 items
+...
+============================== 22 passed in 1.53s ==============================
+```
+
+**Proof the tests actually test something, not just pass trivially:** temporarily changed the minimum-photos rule in `app.py` from `< 10` to `< 2`, reran the suite, and watched the corresponding test genuinely fail:
+
+```
+tests/test_app.py::test_reconstruct_too_few_photos_returns_422 FAILED
+E       assert 202 == 422
+E        +  where 202 = <WrapperTestResponse streamed [202 ACCEPTED]>.status_code
+1 failed in 1.12s
+```
+
+Reverted the change immediately after, reran the full suite to confirm it was back to 22 passed. This before/after/broken/fixed cycle is the actual evidence that this test suite would catch a real regression, not just decoration that always shows green.
+
+Run it yourself: `cd heritage-api && pip install -r requirements.txt && python -m pytest tests/ -v`
