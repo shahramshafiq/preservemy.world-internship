@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shahram Shafiq | AI-Based 3D Scene Reconstruction | PreserveMy.World x TechRealm 2026</title>
+<meta name="description" content="Final capstone showcase: AI-Based 3D Scene Reconstruction track, PreserveMy.World x TechRealm Impact Internship 2026.">
+<style>
+  :root{
+    --bg:#0c1210; --panel:#121c18; --panel2:#16221d;
+    --text:#eef2ee; --muted:#9db3a6;
+    --gold:#d4a84a; --terracotta:#c1683f; --sand:#e8dcc0;
+    --line:#243530;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:'Segoe UI', system-ui, -apple-system, sans-serif;
+    line-height:1.6;
+  }
+  a{color:var(--gold); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  img{max-width:100%; display:block; border-radius:10px;}
+  .wrap{max-width:1100px; margin:0 auto; padding:0 6vw;}
+
+  /* NAV */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(12,18,16,0.92); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding:14px 6vw;}
+  .brand{font-weight:800; letter-spacing:.02em; color:var(--sand);}
+  .brand span{color:var(--gold);}
+  .navlinks{display:flex; gap:22px; font-size:.88rem;}
+  .navlinks a{color:var(--muted);}
+  .navlinks a:hover{color:var(--sand); text-decoration:none;}
+
+  /* HERO */
+  header.hero{
+    padding:90px 0 60px; text-align:center;
+    background:radial-gradient(ellipse at 50% -10%, #24352c 0%, var(--bg) 60%);
+    border-bottom:1px solid var(--line);
+  }
+  .kicker{color:var(--terracotta); font-weight:700; letter-spacing:.12em; text-transform:uppercase; font-size:.8rem; margin-bottom:16px;}
+  h1{font-size:clamp(2.1rem,5vw,3.4rem); color:var(--sand); line-height:1.15; margin-bottom:18px;}
+  .lead{color:var(--muted); font-size:1.1rem; max-width:680px; margin:0 auto 30px;}
+  .pillrow{display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-bottom:10px;}
+  .pill{background:var(--panel2); border:1px solid var(--line); padding:8px 16px; border-radius:999px; font-size:.85rem; color:var(--sand);}
+
+  section{padding:64px 0; border-bottom:1px solid var(--line);}
+  h2{color:var(--sand); font-size:1.8rem; margin-bottom:10px;}
+  .section-sub{color:var(--muted); max-width:680px; margin-bottom:36px;}
+
+  /* STAT STRIP */
+  .stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:16px;}
+  .stat{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:20px; text-align:center;}
+  .stat .n{font-size:1.7rem; font-weight:800; color:var(--gold);}
+  .stat .l{color:var(--muted); font-size:.82rem; margin-top:4px;}
+
+  /* TIMELINE */
+  .timeline{border-left:2px solid var(--line); padding-left:26px; display:flex; flex-direction:column; gap:26px;}
+  .tl-item{position:relative;}
+  .tl-item::before{content:''; position:absolute; left:-33px; top:4px; width:12px; height:12px; border-radius:50%; background:var(--gold); border:2px solid var(--bg);}
+  .tl-week{color:var(--terracotta); font-weight:700; font-size:.82rem; letter-spacing:.05em; text-transform:uppercase;}
+  .tl-title{color:var(--sand); font-weight:700; margin:2px 0 4px;}
+  .tl-desc{color:var(--muted); font-size:.94rem;}
+
+  /* PROJECT CARDS */
+  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:22px;}
+  .card{background:var(--panel); border:1px solid var(--line); border-radius:14px; overflow:hidden; display:flex; flex-direction:column;}
+  .card img, .card video{width:100%; height:190px; object-fit:cover; border-radius:0;}
+  .card-body{padding:20px;}
+  .card-tag{color:var(--terracotta); font-size:.75rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; margin-bottom:6px;}
+  .card-title{color:var(--sand); font-weight:700; font-size:1.08rem; margin-bottom:8px;}
+  .card-desc{color:var(--muted); font-size:.92rem; margin-bottom:12px;}
+  .card-links{display:flex; gap:14px; flex-wrap:wrap; font-size:.85rem;}
+
+  .honest-box{
+    background:var(--panel2); border-left:3px solid var(--terracotta);
+    border-radius:6px; padding:14px 16px; font-size:.88rem; color:var(--muted); margin-top:14px;
+  }
+  .honest-box b{color:var(--sand);}
+
+  footer{padding:50px 0; text-align:center; color:var(--muted); font-size:.9rem;}
+  footer a{color:var(--gold);}
+
+  @media (max-width:640px){
+    .navlinks{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">Shahram <span>Shafiq</span></div>
+    <div class="navlinks">
+      <a href="#journey">Journey</a>
+      <a href="#reconstruction">3D Reconstruction</a>
+      <a href="#ml">Machine Learning</a>
+      <a href="#story">Story &amp; Film</a>
+      <a href="#team">Team Taxila</a>
+      <a href="#build">Full-Stack</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">PreserveMy.World x TechRealm 2026 &middot; Final Presentation</div>
+    <h1>AI-Based 3D Scene Reconstruction</h1>
+    <p class="lead">Five weeks turning real Pakistani heritage sites, Taxila's Jaulian monastery, Badshahi Mosque, Mohenjo-daro, into verified 3D reconstructions, trained models, and honest documentation. Shahram Shafiq, FAST NUCES Islamabad.</p>
+    <div class="pillrow">
+      <div class="pill">22 Jun &ndash; 1 Aug 2026</div>
+      <div class="pill">AI-Based 3D Scene Reconstruction Track</div>
+      <div class="pill">Team Taxila &middot; Lead</div>
+    </div>
+  </div>
+</header>
+
+<section id="stats">
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><div class="n">13,375</div><div class="l">real 3D points reconstructed</div></div>
+      <div class="stat"><div class="n">97.18%</div><div class="l">neural network test accuracy</div></div>
+      <div class="stat"><div class="n">70,000</div><div class="l">real MNIST images trained on</div></div>
+      <div class="stat"><div class="n">24,091</div><div class="l">ML feature points detected</div></div>
+      <div class="stat"><div class="n">5</div><div class="l">independently verified research sources</div></div>
+      <div class="stat"><div class="n">24+</div><div class="l">portal modules delivered</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="journey">
+  <div class="wrap">
+    <h2>The journey</h2>
+    <p class="section-sub">Five weeks, building from Python fundamentals up to a full reconstruction and storytelling pipeline, every step documented honestly, including the parts that failed first.</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-week">Week 1 &middot; Foundations</div>
+        <div class="tl-title">GitHub portfolio, Python, Git, first PR</div>
+        <div class="tl-desc">Set up the reconstruction track's working repo, ran a Structure-from-Motion simulation, and merged the first real pull request.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-week">Week 2 &middot; Research &amp; ML</div>
+        <div class="tl-title">Footage sourcing, linear regression, method comparison</div>
+        <div class="tl-desc">Sourced and verified multi-angle footage of Badshahi Mosque, Lahore, built linear regression from scratch, and researched COLMAP, NeRF, 3D Gaussian Splatting, and monocular depth as candidate reconstruction methods.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-week">Week 3 &middot; Real 3D Reconstruction</div>
+        <div class="tl-title">SfM honestly failed, so a monocular reconstruction was built instead</div>
+        <div class="tl-desc">Tested real multi-view Structure-from-Motion on curated photos, it genuinely wasn't viable (12-17 verified matches per pair). Pivoted to a monocular depth heuristic and exported a real, hand-validated 13,375-point <code>.ply</code> reconstruction of the Jaulian monastery ruins at Taxila. Logistic regression on the real Kaggle Titanic dataset followed the same week.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-week">Week 4 &middot; Neural Networks &amp; Storytelling</div>
+        <div class="tl-title">MNIST classifier, personal storytelling film, team showcase</div>
+        <div class="tl-desc">Trained a Keras neural network to 97.18% test accuracy on real MNIST data, cross-checked against a from-scratch numpy rebuild. Built two short films: one on Team Taxila's heritage work, one a personal story synced to a real recorded voice-over.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-week">Extension Sprints &middot; Verified Make-up Work</div>
+        <div class="tl-title">Deepened existing work with real evidence, not new filler</div>
+        <div class="tl-desc">Added quantitative point-cloud QA (density, outlier detection, multi-angle rendering) to the Taxila reconstruction, and built a fully cited, live-verified source log for the reconstruction methods research.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reconstruction">
+  <div class="wrap">
+    <h2>3D Reconstruction: Jaulian Monastery, Taxila</h2>
+    <p class="section-sub">The flagship deliverable for this track. Built honestly: real multi-view SfM was tested first and genuinely failed, and that failure is documented, not hidden, before the working monocular approach.</p>
+    <div class="cards">
+      <div class="card">
+        <img src="week3-3d-reconstruction/output/multi_angle_qa_render.png" alt="Jaulian monastery point cloud, 4 viewing angles">
+        <div class="card-body">
+          <div class="card-tag">Core Reconstruction</div>
+          <div class="card-title">13,375-point validated .ply reconstruction</div>
+          <div class="card-desc">Hand-built PLY writer, three-way validated (re-parsed, reloaded, cross-checked), now extended with quantitative QA: density, nearest-neighbor outlier detection, and 4-angle rendering.</div>
+          <div class="card-links">
+            <a href="https://github.com/shahramshafiq/PMW-day1/tree/main/week3-3d-reconstruction">Full writeup &rarr;</a>
+            <a href="week3-3d-reconstruction/output/jaulian_monastery_taxila.ply">Download .ply &rarr;</a>
+          </div>
+          <div class="honest-box"><b>Honest limitation:</b> a monocular heuristic depth estimate, not real multi-view triangulation. The SfM test that came first only found 12-17 verified matches per photo pair, a cited heritage-photogrammetry source explains why: reliable multi-view needs about 66% photo overlap, which these 6 photos never had.</div>
+        </div>
+      </div>
+      <div class="card">
+        <img src="ml-viz-ar-capture3d/output/01_ml_visualization.png" alt="ML feature detection on Jaulian monastery cell walls">
+        <div class="card-body">
+          <div class="card-tag">ML Visualization &amp; AR</div>
+          <div class="card-title">24,091 feature points, AR line overlay</div>
+          <div class="card-desc">Real Sobel gradient and Harris corner detection on the monastery's cell walls, plus a Hough-line AR-style overlay simulating what a visitor's phone might show live, tightened from a noisy 271 lines down to 25 structural lines.</div>
+          <div class="card-links">
+            <a href="https://github.com/shahramshafiq/PMW-day1/tree/main/ml-viz-ar-capture3d">Full writeup &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ml">
+  <div class="wrap">
+    <h2>Machine Learning, from scratch and verified</h2>
+    <p class="section-sub">Every model checked two ways: a from-scratch numpy implementation cross-checked against a trusted library, so agreement is real proof, not a claim.</p>
+    <div class="cards">
+      <div class="card">
+        <img src="week4-neural-networks/output/confusion_matrix.png" alt="Neural network confusion matrix on MNIST test set">
+        <div class="card-body">
+          <div class="card-tag">Neural Networks</div>
+          <div class="card-title">97.18% test accuracy on real MNIST</div>
+          <div class="card-desc">Keras Sequential model (784-128-64-10) on the full 70,000-image MNIST dataset, plus a from-scratch numpy rebuild (manual forward pass and backpropagation) landing in the same range as an independent cross-check.</div>
+          <div class="card-links">
+            <a href="https://github.com/shahramshafiq/PMW-day1/blob/main/week4-neural-networks/youthxai_neural_networks.ipynb">Notebook &rarr;</a>
+            <a href="week4-neural-networks/visualisation_deck.html">Visual deck &rarr;</a>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <img src="week3-logistic-regression/output/photo_usability_classifier.png" alt="Logistic regression classifier plot">
+        <div class="card-body">
+          <div class="card-tag">Logistic &amp; Linear Regression</div>
+          <div class="card-title">Titanic survival, and a reconstruction-photo classifier</div>
+          <div class="card-desc">Logistic regression from scratch, verified against scikit-learn, applied both to the real public Kaggle Titanic dataset and to a photo-usability classifier for reconstruction capture. Linear regression from scratch the week before.</div>
+          <div class="card-links">
+            <a href="https://github.com/shahramshafiq/PMW-day1/blob/main/week3-logistic-regression/youthxai_logistic_regression.ipynb">Notebook &rarr;</a>
+            <a href="https://github.com/shahramshafiq/PMW-day1/blob/main/youthxai_linear_regression.ipynb">Linear regression &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="story">
+  <div class="wrap">
+    <h2>Story &amp; Film</h2>
+    <p class="section-sub">Two short films, both built from real project artifacts and, where used, licensed footage, never claimed as something they're not.</p>
+    <div class="cards">
+      <div class="card">
+        <video controls preload="none" poster="ml-viz-ar-capture3d/source/jaulian-monastery-taxila.jpg">
+          <source src="week3-story-film/output/taxila_preserved_in_3d.mp4" type="video/mp4">
+        </video>
+        <div class="card-body">
+          <div class="card-tag">Team Taxila</div>
+          <div class="card-title">Taxila, Preserved in 3D</div>
+          <div class="card-desc">A 75-second film built entirely from real reconstruction artifacts, the ML visualizations, the AR overlay, and the live rotating point cloud, following a written script.</div>
+          <div class="card-links"><a href="https://github.com/shahramshafiq/PMW-day1/tree/main/week3-story-film">Script &amp; writeup &rarr;</a></div>
+        </div>
+      </div>
+      <div class="card">
+        <video controls preload="none">
+          <source src="week4-home-story/output/twenty_guys_and_a_bus_ride.mp4" type="video/mp4">
+        </video>
+        <div class="card-body">
+          <div class="card-tag">Individual Storytelling</div>
+          <div class="card-title">Twenty Guys and a Bus Ride</div>
+          <div class="card-desc">What home means to me: three years at Cadet College Hasan Abdal's hostel, told with my own recorded voice-over over real photos of the team, the wing, and the campus.</div>
+          <div class="card-links">
+            <a href="https://github.com/shahramshafiq/PMW-day1/tree/main/week4-home-story">Full writeup &rarr;</a>
+            <a href="https://youtu.be/5nhRp_gWVRs">Watch on YouTube &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="team">
+  <div class="wrap">
+    <h2>Team Taxila</h2>
+    <p class="section-sub">Group preservation sprint on Taxila and the Gandhara learning route. I led a 3-person team: Rabeea Iman, Ruwaida Shakeel, and myself.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Live Location Page</div>
+          <div class="card-title">Interactive Taxila showcase, built by Ruwaida Shakeel</div>
+          <div class="card-desc">Covers the real 2026 UNESCO cement-restoration warning at Mohra Moradu and Sirkap, an interactive 3D viewer of my own reconstruction, the Gandhara route map, and 8 cited sources. My 3D work and short film are cross-posted into this shared page.</div>
+          <div class="card-links"><a href="https://ruwaidashakeel05.github.io/Taxila/">Visit the live page &rarr;</a></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Research</div>
+          <div class="card-title">Heritage writing: Mohenjo-daro</div>
+          <div class="card-desc">A researched, independently fact-checked write-up on Mohenjo-daro, every historical claim verified before use, part of the same commitment to honest, sourced heritage content that runs through the reconstruction work.</div>
+          <div class="card-links"><a href="https://github.com/shahramshafiq/PMW-day1/blob/main/heritage-writing/mohenjo-daro.md">Read the write-up &rarr;</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="build">
+  <div class="wrap">
+    <h2>Full-Stack &amp; Research Foundations</h2>
+    <p class="section-sub">The engineering and research underneath the reconstruction work.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Full-Stack</div>
+          <div class="card-title">EchoFrame Heritage API</div>
+          <div class="card-desc">Full-stack Flask backend plus a React dashboard, a reconstruction-simulation endpoint the team's frontend can call directly.</div>
+          <div class="card-links"><a href="https://github.com/shahramshafiq/PMW-day1/tree/main/heritage-api">View the app &rarr;</a></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Research</div>
+          <div class="card-title">Cited source log: 3D reconstruction methods</div>
+          <div class="card-desc">5 sources on COLMAP, NeRF, 3D Gaussian Splatting, and monocular depth, each independently live-verified, tied directly back to the real Week 3 SfM result rather than left as generic references.</div>
+          <div class="card-links"><a href="https://github.com/shahramshafiq/PMW-day1/blob/main/research/source_log_3d_methods.md">Read the source log &rarr;</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Shahram Shafiq &middot; FAST NUCES Islamabad &middot; AI-Based 3D Scene Reconstruction Track</p>
+    <p style="margin-top:8px;">Full repository: <a href="https://github.com/shahramshafiq/PMW-day1">github.com/shahramshafiq/PMW-day1</a></p>
+    <p style="margin-top:8px;">PreserveMy.World x TechRealm Impact Internship, 2026</p>
+  </div>
+</footer>
+
+</body>
+</html>
