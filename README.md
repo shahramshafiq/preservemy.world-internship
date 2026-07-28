@@ -7,6 +7,8 @@
 
 This is my working repo for the **PreserveMy.World x TechRealm Impact Internship**, team **EchoFrame Labs**, on the AI-Based 3D Reconstruction track. PreserveMy.World turns phone footage into explorable 3D digital records of heritage sites. My job on this track is to understand and build pieces of the AI pipeline that makes that possible: sourcing footage, comparing reconstruction methods, and building tools around the data.
 
+**Live final showcase:** [shahramshafiq.github.io/PMW-day1](https://shahramshafiq.github.io/PMW-day1/), a single page tying together every deliverable in this repo, the 3D reconstruction, the trained models, both short films, Team Taxila's group work, and the full-stack app.
+
 ---
 
 ## Who I am
@@ -26,7 +28,8 @@ This is my working repo for the **PreserveMy.World x TechRealm Impact Internship
 ```
 PMW-day1/
 ├── README.md                          <- you are here
-├── week1-ai-review.md                 <- strict repo audit, merge fix, prompt reflection
+├── index.html                         <- live final showcase (GitHub Pages)
+├── week1-ai-review.md                 <- strict repo audit, merge fix, prompt reflection, revised in Extension Sprint 4
 ├── portfolio/
 │   └── index.html                     <- personal HTML portfolio page
 ├── 3d-learning/
@@ -49,7 +52,8 @@ PMW-day1/
 ├── week3-3d-reconstruction/
 │   ├── sfm_feasibility_test.py        <- real ORB+RANSAC test of multi-view SfM viability
 │   ├── build_ply_reconstruction.py    <- exports a real, validated .ply point cloud
-│   └── output/                        <- jaulian_monastery_taxila.ply + verification render
+│   ├── point_cloud_qa.py              <- Extension Sprint 1: quantitative point-cloud QA
+│   └── output/                        <- jaulian_monastery_taxila.ply + verification renders
 ├── week3-logistic-regression/
 │   ├── youthxai_logistic_regression.ipynb  <- logistic regression + real Kaggle Titanic pipeline
 │   ├── data/titanic.csv               <- real, verified Titanic training set (891 rows)
@@ -57,15 +61,30 @@ PMW-day1/
 ├── week3-story-film/
 │   ├── script.md                      <- written story and script
 │   ├── build_video.py                 <- builds a real MP4 from real project artifacts
-│   └── output/taxila_preserved_in_3d.mp4  <- the final 71-second video
+│   └── output/taxila_preserved_in_3d.mp4  <- the final 75-second video
+├── week4-neural-networks/
+│   ├── youthxai_neural_networks.ipynb <- Keras MNIST classifier + from-scratch numpy cross-check
+│   ├── visualisation_deck.html        <- self-contained results deck
+│   └── output/                        <- training curves, confusion matrix, sample digits
+├── week4-home-story/
+│   ├── script.md                      <- personal storytelling script
+│   ├── build_video.py                 <- builds the video from real photos + own voice-over
+│   └── output/twenty_guys_and_a_bus_ride.mp4  <- the final video
+├── week4-video-qa-followup/
+│   └── README.md                      <- structured QA pass on the storytelling video, bugs found and fixed
+├── research/
+│   └── source_log_3d_methods.md       <- Extension Sprint 2: 5 live-verified, cited sources
+├── heritage-api/
+│   ├── app.py                         <- Flask REST API (7 endpoints)
+│   ├── templates/index.html           <- HTML frontend
+│   ├── react-app/index.html           <- React dashboard
+│   ├── tests/test_app.py              <- Extension Sprint 3: 22-case pytest suite, 0 tests before
+│   └── screenshots/                   <- evidence the app runs
+├── iris-hacks-interest/
+│   └── README.md                      <- Iris Hacks IV interest form confirmation
 ├── youthxai_python_colab.ipynb        <- Kaggle Python course applied to 3D reconstruction
 ├── youthxai_linear_regression.ipynb   <- linear regression + Kaggle Intro to ML
-├── youthxai-regression-output/        <- generated plots from the regression notebook
-└── heritage-api/
-    ├── app.py                         <- Flask REST API (7 endpoints)
-    ├── templates/index.html           <- HTML frontend
-    ├── react-app/index.html           <- React dashboard
-    └── screenshots/                   <- evidence the app runs
+└── youthxai-regression-output/        <- generated plots from the regression notebook
 ```
 
 ---
@@ -214,6 +233,39 @@ An AI-based 3D reconstruction project has no camera and no live-action footage, 
 
 ---
 
+## Neural Networks: MNIST Digit Classifier
+
+Notebook and deck: [`week4-neural-networks/`](week4-neural-networks/)
+
+A Keras Sequential model (784-128-64-10, matching the session's own architecture slide) trained on the real, full 70,000-image MNIST dataset, 97.18% test accuracy on 10,000 held-out images the model never saw. Backed by a from-scratch numpy rebuild of the same architecture (manual forward pass and backpropagation, no library), landing in the same range on the same test set, the actual proof the from-scratch version does what the library does, not just a claim. Caught a real bug while building this: `matplotlib.use('Agg')` was silently blocking every chart from actually embedding in the executed notebook, caught by checking the saved file's real image data instead of trusting that the plotting cells ran without error.
+
+---
+
+## Individual Storytelling: Twenty Guys and a Bus Ride
+
+Write-up: [`week4-home-story/`](week4-home-story/) &middot; live: [youtu.be/5nhRp_gWVRs](https://youtu.be/5nhRp_gWVRs)
+
+What home means to me: three years at Cadet College Hasan Abdal's hostel, the routine, basketball, away fixtures at sister colleges, and the twenty guys in my wing, told with my own recorded voice-over over real photos of the team, the wing, and the campus gate, plus licensed B-roll for the two beats with no real photo available. Structured QA pass documented separately in [`week4-video-qa-followup/`](week4-video-qa-followup/): four real bugs found and fixed, a voice-over that was technically present but inaudible under the music, audio clipping traced to two distinct causes in the ffmpeg filter chain, caption-to-narration sync drift from crossfade compounding, and one B-roll clip that turned out to show mismatched party footage.
+
+---
+
+## Extension Sprints: Verified Make-up Work
+
+Real, evidence-backed improvements to existing deliverables, not new filler:
+
+- **Sprint 1, quantitative point-cloud QA**: [`week3-3d-reconstruction/point_cloud_qa.py`](week3-3d-reconstruction/point_cloud_qa.py) added density, nearest-neighbor outlier detection, a color sanity check, and 4-angle rendering to the Taxila `.ply` reconstruction, which previously only had a single visual reload check.
+- **Sprint 2, cited source log**: [`research/source_log_3d_methods.md`](research/source_log_3d_methods.md), 5 sources on COLMAP, NeRF, 3D Gaussian Splatting, and monocular depth, each independently live-verified, tied directly back to the real Week 3 SfM result (12 to 17 matches per photo pair) instead of left as generic references.
+- **Sprint 3, real test suite**: [`heritage-api/tests/test_app.py`](heritage-api/tests/test_app.py), 22 pytest cases covering every endpoint, up from 0 tests before. Proved the suite actually catches regressions by deliberately breaking a rule, watching the test fail, then reverting.
+- **Sprint 4, this revision**: reviewed [`week1-ai-review.md`](week1-ai-review.md) against the judging rubric and found the exact failure mode it originally flagged, a stale root README, had quietly recurred (everything from Week 4 onward was missing, including the live showcase site). Fixed it, this README is the result, and documented the whole before/after in the revision itself.
+
+---
+
+## Iris Hacks IV
+
+[`iris-hacks-interest/`](iris-hacks-interest/): confirmed interest in Iris Hacks IV, a free virtual AI hackathon for students 13+, with the real confirmation screenshot as evidence.
+
+---
+
 ## Mission Connection
 
 PreserveMy.World's core mission is to document and preserve cultural heritage before it disappears. 3D reconstruction is the technical engine that makes this possible, turning footage of a mosque, fort, or old city street into a navigable digital record. As someone on the AI track, my job is to understand and eventually contribute to that pipeline.
@@ -222,4 +274,4 @@ Pakistan has hundreds of heritage sites that are underdocumented. Mohenjo-daro, 
 
 ---
 
-*Portfolio, 3D reconstruction research, two applied Python/ML notebooks, a full stack heritage reconstruction API, a real repo audit, and sourced multi-angle footage all live in this repo.*
+*Portfolio, a validated 3D point-cloud reconstruction with quantitative QA, three applied ML notebooks (linear regression, logistic regression, a 97.18%-accuracy neural network), a full stack heritage reconstruction API with a real test suite, two short films, a cited research source log, a self-revising repo audit, and a live final showcase all live in this repo.*

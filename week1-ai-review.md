@@ -1,6 +1,15 @@
 # Week 1 AI Review and Prompt Engineering
 
-**Shahram Shafiq | AI-Based 3D Reconstruction Track | Module 7 (w1d4)**
+**Shahram Shafiq | AI-Based 3D Reconstruction Track | Module 7 (w1d4), revised in Extension Sprint 4**
+
+---
+
+## Revision note (Extension Sprint 4: Review & Revision)
+
+**Old version** (before this revision): [github.com/shahramshafiq/PMW-day1/blob/18dd2f1/week1-ai-review.md](https://github.com/shahramshafiq/PMW-day1/blob/18dd2f15b79c3a49659b40e67868416a9129653d/week1-ai-review.md)
+**Revised version**: this file, on `main`
+**What changed:** Steps 1 to 5 below are the untouched original review. Steps 6 to 8 are new: a rubric-based review of the original findings against the general judging rubric (clarity, evidence, technical depth, communication, mission fit, accessibility), a real discovery that one of the original findings had quietly recurred, the actual fix, and fresh verification.
+**What I learned from the revision:** catching a problem once and fixing it does not mean it stays fixed. The exact same failure mode (a stale root README) came back on its own as the repo grew, because updating the README was never made a habit, just a one-time cleanup. See Step 8 for the actual lesson going forward.
 
 ---
 
@@ -65,3 +74,53 @@ Using the verification-checklist prompt style, before treating this as done I ma
 **What I verified manually, not just trusted:** the claim that the merge "worked." I did not just read a success message; I checked the GitHub API directly for PR #1's real merge status and grepped the whole repo for the em dashes and AI-tool line myself, because those are the two mistakes I have made before in this repo and did not want to repeat silently.
 
 **What I will do differently next week:** check GitHub branch and PR state as a first step before starting new work, not as an afterthought. A branch sitting unmerged for a week is an easy thing to miss if I only look at my local `main`.
+
+---
+
+## Step 6 (Extension Sprint 4): rubric review of the original 5 findings
+
+Reviewed each original finding against the general judging rubric dimensions this sprint asks for: clarity, evidence, technical depth, communication, mission fit, and accessibility. Checked each one against the actual current state of the repo, not assumed still true or still false.
+
+| # | Original finding | Status now, checked directly |
+|---|---|---|
+| 1 | PR #1 unmerged | Still fixed. `state: closed, merged: true` confirmed again via the GitHub API today (Step 8). |
+| 2 | README frozen at "Day 1 complete" | **Recurred.** Fixed at the time, but by today the same README had gone stale again, missing everything from Week 4 onward. See below, this is the real finding of this revision. |
+| 3 | No team identity anywhere in the repo | Fixed, and it stuck. The current README's opening line names "team EchoFrame Labs" and its tagline directly (verified by grep, Step 8). |
+| 4 | Leftover AI-tool misattribution and em dashes | Still fixed, no recurrence found in a fresh grep across the whole repo (Step 8). |
+| 5 | heritage-api buried, not linked from root README | Still fixed, still linked (verified by grep, Step 8). |
+
+**Weakness in the original review, judged by this rubric:** it had strong technical depth and evidence (finding 1 in particular, with real git and API verification) but weak accessibility follow-through. The review fixed things once and never checked whether they stayed fixed. A rubric review is supposed to catch exactly this kind of gap, and it did.
+
+---
+
+## Step 7: the recurred problem, found and fixed
+
+Before assuming finding #2 was still resolved, checked it directly by grepping the current root README for every major deliverable added since Week 1:
+
+```
+heritage-api: 5 matches
+week4-neural-networks: 0 matches
+week4-home-story: 0 matches
+week4-video-qa-followup: 0 matches
+source_log_3d_methods: 0 matches
+iris-hacks: 0 matches
+shahramshafiq.github.io: 0 matches
+```
+
+`heritage-api` was still linked, everything from Week 4 onward, including the live final showcase site at `shahramshafiq.github.io/PMW-day1`, the actual capstone deliverable, was completely absent. This is the exact same failure mode as the original finding #2, a README that stopped reflecting the real repo, just recurred later instead of being a one-time problem.
+
+**The fix:** updated `README.md` directly, not a separate document: added the live showcase link near the top, updated the file tree to include every folder added since Week 3 (`week4-neural-networks/`, `week4-home-story/`, `week4-video-qa-followup/`, `research/source_log_3d_methods.md`, `heritage-api/tests/`, `iris-hacks-interest/`, `index.html`), and wrote full narrative sections for the neural network, the storytelling film, the QA follow-up, all four extension sprints, and Iris Hacks IV, matching the style of the existing sections rather than a bare list.
+
+---
+
+## Step 8: verification
+
+Checked, not assumed:
+
+- Re-ran the same grep check after the fix: all 7 terms now return real matches, including `shahramshafiq.github.io`.
+- Checked every internal markdown link in the revised README against the actual filesystem (`os.path.exists` on all 24 relative links), all resolve.
+- Re-confirmed finding #1 is still true today, not just at the time of the original review: `curl` to the GitHub API for PR #1 still returns `state: closed, merged: true`.
+- Re-confirmed the portfolio link (`shahramshafiq-portfolio.vercel.app`) and the main GitHub repo both return HTTP 200 today.
+- Re-confirmed finding #3 (team identity) by grep, not memory: `EchoFrame` appears twice in the current README, both genuinely in context, not just a stray mention.
+
+**The actual lesson from this revision, not the same one from Step 5:** verifying a fix once, at the time you make it, is not the same as the fix holding up. The original review already knew to check things directly instead of trusting a clean result, that part worked. What it did not do was set up any way to notice if a fixed problem quietly came back weeks later. Going forward, a stale-README check belongs in the same category as the clock-in habit from the original Step 5, something to do as a matter of routine, not something to fix once and consider closed.
