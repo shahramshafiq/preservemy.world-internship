@@ -36,7 +36,8 @@ PMW-day1/
 │   ├── point_cloud_basics.py          <- Python script: 3D reconstruction concepts
 │   └── experiment_notes.md            <- what I tried, what worked, what didn't
 ├── blog-post/
-│   └── medium_draft.md                <- blog post content (posted on Dev.to)
+│   ├── medium_draft.md                <- blog post content (posted on Dev.to)
+│   └── 3d_reconstruction_walkthrough.md  <- Extension Sprint 6: public write-up
 ├── research/
 │   ├── 3d_methods_comparison.md       <- COLMAP vs NeRF vs 3DGS vs MiDaS
 │   ├── depth_map_demo.py              <- monocular depth simulation script
@@ -82,6 +83,8 @@ PMW-day1/
 │   └── screenshots/                   <- evidence the app runs
 ├── iris-hacks-interest/
 │   └── README.md                      <- Iris Hacks IV interest form confirmation
+├── certificate-evidence-pack/
+│   └── README.md                      <- Extension Sprint 7: full evidence index, every deliverable mapped to a link
 ├── youthxai_python_colab.ipynb        <- Kaggle Python course applied to 3D reconstruction
 ├── youthxai_linear_regression.ipynb   <- linear regression + Kaggle Intro to ML
 └── youthxai-regression-output/        <- generated plots from the regression notebook
@@ -257,6 +260,11 @@ Real, evidence-backed improvements to existing deliverables, not new filler:
 - **Sprint 2, cited source log**: [`research/source_log_3d_methods.md`](research/source_log_3d_methods.md), 5 sources on COLMAP, NeRF, 3D Gaussian Splatting, and monocular depth, each independently live-verified, tied directly back to the real Week 3 SfM result (12 to 17 matches per photo pair) instead of left as generic references.
 - **Sprint 3, real test suite**: [`heritage-api/tests/test_app.py`](heritage-api/tests/test_app.py), 22 pytest cases covering every endpoint, up from 0 tests before. Proved the suite actually catches regressions by deliberately breaking a rule, watching the test fail, then reverting.
 - **Sprint 4, this revision**: reviewed [`week1-ai-review.md`](week1-ai-review.md) against the judging rubric and found the exact failure mode it originally flagged, a stale root README, had quietly recurred (everything from Week 4 onward was missing, including the live showcase site). Fixed it, this README is the result, and documented the whole before/after in the revision itself.
+- **Sprint 5, final artifact improvement**: polished the live showcase itself ([`index.html`](index.html)), adding a mentor note and the Extension Sprints section it had never had, then re-verified every link, image, and video on the deployed page.
+- **Sprint 6, public write-up**: [`blog-post/3d_reconstruction_walkthrough.md`](blog-post/3d_reconstruction_walkthrough.md), a public walkthrough of the 3D reconstruction journey: the real SfM test failure, the pivot to a monocular reconstruction, and the QA hardening from Sprint 1. Caught and corrected a factual error in its own first draft before publishing (the failed SfM attempt and the successful reconstruction were on two different photo sets, an early draft conflated them).
+- **Sprint 7, certificate evidence pack**: [`certificate-evidence-pack/README.md`](certificate-evidence-pack/README.md), a single index mapping every deliverable across the full internship, portfolio through this line, to its real GitHub link and completion date.
+
+This section itself is the thing Sprint 4 and Sprint 5 both independently caught going stale (missing the newest, most rubric-relevant work). Keeping it current through Sprint 7 is the direct fix, not a repeat of the same gap a third time.
 
 ---
 
