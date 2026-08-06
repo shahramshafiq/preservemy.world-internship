@@ -16,19 +16,19 @@ A personal short film about what home means to me: three years at Cadet College 
 
 **Update: real photos added.** The first cut used only licensed stock B-roll because no personal photos were available yet. Five real photos surfaced afterward (the basketball team, the wing/dorm room with the Drill Winner trophy, entry mates on a hike, the full cadet group outside the main building, and the campus gate) and now anchor eight of the eleven scenes, including bookending the film's opening/closing and the basketball and "wing" beats with the actual people and places the narration is about. One more real photo, a wide aerial view of the Hasan Abdal valley, came from Wikimedia Commons (all files hosted there are required to carry a free license). Two scenes (the away-fixture travel beat and the "I left" beat) still use licensed stock B-roll, since no real footage exists for a bus ride or the moment of leaving specifically, used as illustrative mood, not claimed as literal footage:
 
-- `bus_pov.mp4` (Mixkit Free License) — "Point of view from a bus passenger seat roading in a highway"
-- `rainy_window.mp4` (Mixkit Free License) — "Window on a rainy day"
+- `bus_pov.mp4` (Mixkit Free License): "Point of view from a bus passenger seat roading in a highway"
+- `rainy_window.mp4` (Mixkit Free License): "Window on a rainy day"
 
 An earlier cut used a different bus clip that, on review, turned out to show people in party/nightclub styling under neon lighting, completely wrong for a story about cadets on a school fixture trip. Caught by actually watching spot-check frames rather than trusting that "a bus interior" was close enough. Replaced with the neutral road point-of-view shot above before this went anywhere near a submission.
 
 Real photos used (`source/photos/`, personal photos kept local, not pushed, see the note at the bottom):
 
-- `cch_gate.jpg` — the campus entrance, "Character, Country, Honour" tower. Opens and closes the film.
-- `group_outside_building.jpg` — the full cadet group outside the main hostel building.
-- `basketball_team.jpg` — the actual basketball team (cropped down from a phone screenshot that had UI chrome baked in). Anchors both basketball beats.
-- `friends_hillside.jpg` — entry mates on a hike in CCH jackets.
-- `wing_dorm_trophy.jpg` — the actual wing/dorm room, cadets with a Drill Winner trophy. Anchors the "Twenty Guys" beat and its callback later in the script.
-- `cch_aerial_wikimedia.jpg` — wide valley view from Wikimedia Commons, used for the "everything ran on a schedule" beat.
+- `cch_gate.jpg`: the campus entrance, "Character, Country, Honour" tower. Opens and closes the film.
+- `group_outside_building.jpg`: the full cadet group outside the main hostel building.
+- `basketball_team.jpg`: the actual basketball team (cropped down from a phone screenshot that had UI chrome baked in). Anchors both basketball beats.
+- `friends_hillside.jpg`: entry mates on a hike in CCH jackets.
+- `wing_dorm_trophy.jpg`: the actual wing/dorm room, cadets with a Drill Winner trophy. Anchors the "Twenty Guys" beat and its callback later in the script.
+- `cch_aerial_wikimedia.jpg`: wide valley view from Wikimedia Commons, used for the "everything ran on a schedule" beat.
 
 Real photos are darkened and desaturated slightly under any overlaid text (so white text stays legible on a busy background) using the same crop-to-fill, Ken Burns zoom, color grade, vignette, and grain treatment already applied to the stock footage, so everything reads as one consistent visual language rather than photos bolted onto video.
 

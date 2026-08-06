@@ -39,7 +39,7 @@ Input (28x28) -> Flatten (784) -> Dense(128, relu) -> Dense(64, relu) -> Dense(1
 | Epochs | 8 | 6 |
 | Test accuracy | **97.18%** | 93.73% |
 | Test loss | 0.094 | (cross-entropy, see notebook) |
-| Misclassified | 282 / 10,000 (2.82%) | — |
+| Misclassified | 282 / 10,000 (2.82%) | N/A |
 
 ## Verification
 

@@ -8,9 +8,9 @@
 
 > For three years, home wasn't a house. It was a wing, in a hostel, at Cadet College Hasan Abdal.
 >
-> I got there in 2019. Everything ran on a schedule so tight it should have felt like a punishment — wake-up, drill, class, games period, prep, lights out — but somehow it didn't. It felt like the safest routine I've ever lived in. Inside that routine, I found basketball, and I got good at it. Good enough that it became mine, the one hour of the day that was actually just for me.
+> I got there in 2019. Everything ran on a schedule so tight it should have felt like a punishment: wake-up, drill, class, games period, prep, lights out, but somehow it didn't. It felt like the safest routine I've ever lived in. Inside that routine, I found basketball, and I got good at it. Good enough that it became mine, the one hour of the day that was actually just for me.
 >
-> The best memories weren't even at CCH itself. They were on the bus rides to other cadet colleges for fixtures. I remember going to Cadet College Kallar Kahar, and it felt like a vacation from CCH, even though we were still in uniform, still representing our college. New campus, new faces, a team to cheer for, a game to win. Then back on the bus, back to the wing, back to the twenty guys I'd entered with — my entry mates, my wing mates, the ones who were there for every 5 a.m. wake-up and every late-night talk after lights out.
+> The best memories weren't even at CCH itself. They were on the bus rides to other cadet colleges for fixtures. I remember going to Cadet College Kallar Kahar, and it felt like a vacation from CCH, even though we were still in uniform, still representing our college. New campus, new faces, a team to cheer for, a game to win. Then back on the bus, back to the wing, back to the twenty guys I'd entered with: my entry mates, my wing mates, the ones who were there for every 5 a.m. wake-up and every late-night talk after lights out.
 >
 > I left in 2022. CCH only offered sciences at A Level, and I wanted to study CS and business, so I moved to Roots International. It was the right call. But three years later, I still measure routine, discipline, and friendship against that wing.
 >
