@@ -91,6 +91,8 @@ PMW-day1/
 │   ├── build_mesh.py                  <- Final Sprint 2: turns the point cloud into a real triangulated mesh
 │   ├── render_mesh_qa.py              <- reloads the exported mesh from disk and renders QA views
 │   └── output/                        <- jaulian_monastery_mesh.ply + QA renders
+├── final-sprint3-peer-review/
+│   └── README.md                      <- Final Sprint 3: peer review of a teammate's page, before/after revision
 ├── youthxai_python_colab.ipynb        <- Kaggle Python course applied to 3D reconstruction
 ├── youthxai_linear_regression.ipynb   <- linear regression + Kaggle Intro to ML
 └── youthxai-regression-output/        <- generated plots from the regression notebook
@@ -280,6 +282,7 @@ The internship's 4-day extension unlocked one last stage after reaching 40 verif
 
 - **Final Sprint 1, project case study**: [`case-study/README.md`](case-study/README.md), a full case study on the strongest personal contribution on this track, the validated Jaulian monastery `.ply` reconstruction. Covers the problem, my role, the SfM feasibility test that failed honestly, the monocular pivot, three-way validation, and the Sprint 1 quantitative QA that followed, each claim linked back to the real commit history rather than summarized from memory.
 - **Final Sprint 2, build / research proof**: [`final-sprint2-mesh-reconstruction/`](final-sprint2-mesh-reconstruction/), a real triangulated mesh built on the validated point cloud. The first attempt rendered as a spiky, unusable mess despite passing its own validation checks; measured the actual cause (per-pixel depth-heuristic noise, not outlier jumps), tried two fixes that didn't work, found the one that did (coarser mesh sampling plus stronger smoothing), and documented the real, still-present residual limitation instead of overselling the fix.
+- **Final Sprint 3, peer review and revision**: [`final-sprint3-peer-review/`](final-sprint3-peer-review/), a real, checked peer review of Ruwaida Shakeel's live Team Taxila page (clarity, evidence, presentation, accuracy, impact, every citation link actually tested), plus a genuine revision applied to my own Final Sprint 2 README as a direct result of what the review surfaced, with real before/after commits.
 
 ---
 

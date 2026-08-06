@@ -57,7 +57,7 @@ The strongest thing on Ruwaida's page is not any single fact, it's that every il
 
 **Before:** [`final-sprint2-mesh-reconstruction/README.md`](../final-sprint2-mesh-reconstruction/README.md) embedded both QA render images with no caption directly under them, the honest limitation about residual ridging was only in a paragraph above and below the images, easy to skip.
 
-**After:** added a direct, one-line italic caption under each image stating what it shows and the real caveat inline, matching the technique Ruwaida's page uses consistently. Real commit diff: [see the revision commit below](#before-after-commit).
+**After:** added a direct, one-line italic caption under each image stating what it shows and the real caveat inline, matching the technique Ruwaida's page uses consistently. Real commit diff: [`f9bda0d`](https://github.com/shahramshafiq/PMW-day1/commit/f9bda0d), applied after and separate from [`725a95b`](https://github.com/shahramshafiq/PMW-day1/commit/725a95b) (this review itself), so the commit history shows the actual review-then-revision order, not a single combined edit.
 
 This is a small change, but it is the specific, meaningful thing the peer review actually surfaced, not a generic "add more detail" filler revision.
 
