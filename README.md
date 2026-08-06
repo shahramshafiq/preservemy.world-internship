@@ -85,6 +85,8 @@ PMW-day1/
 │   └── README.md                      <- Iris Hacks IV interest form confirmation
 ├── certificate-evidence-pack/
 │   └── README.md                      <- Extension Sprint 7: full evidence index, every deliverable mapped to a link
+├── case-study/
+│   └── README.md                      <- Final Sprint 1: project case study on the Jaulian .ply reconstruction
 ├── youthxai_python_colab.ipynb        <- Kaggle Python course applied to 3D reconstruction
 ├── youthxai_linear_regression.ipynb   <- linear regression + Kaggle Intro to ML
 └── youthxai-regression-output/        <- generated plots from the regression notebook
@@ -265,6 +267,14 @@ Real, evidence-backed improvements to existing deliverables, not new filler:
 - **Sprint 7, certificate evidence pack**: [`certificate-evidence-pack/README.md`](certificate-evidence-pack/README.md), a single index mapping every deliverable across the full internship, portfolio through this line, to its real GitHub link and completion date.
 
 This section itself is the thing Sprint 4 and Sprint 5 both independently caught going stale (missing the newest, most rubric-relevant work). Keeping it current through Sprint 7 is the direct fix, not a repeat of the same gap a third time.
+
+---
+
+## Final 10-Hour Sprint: Certificate Completion Work
+
+The internship's 4-day extension unlocked one last stage after reaching 40 verified hours: four 2.5-hour modules due 8 Aug 2026.
+
+- **Final Sprint 1, project case study**: [`case-study/README.md`](case-study/README.md), a full case study on the strongest personal contribution on this track, the validated Jaulian monastery `.ply` reconstruction. Covers the problem, my role, the SfM feasibility test that failed honestly, the monocular pivot, three-way validation, and the Sprint 1 quantitative QA that followed, each claim linked back to the real commit history rather than summarized from memory.
 
 ---
 
