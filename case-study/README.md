@@ -105,4 +105,4 @@ Taxila is a real, actively at-risk Pakistani heritage site: Team Taxila's group 
 - Re-read [`week3-3d-reconstruction/README.md`](../week3-3d-reconstruction/README.md) in full and cross-checked every number in this document (inlier counts, vertex count, outlier percentage, file size) against that source file rather than recalling them from memory.
 - Confirmed all three commit hashes cited above against `git log` directly for this folder.
 - Confirmed the embedded images above are the actual files committed to the repo, not placeholders.
-- Re-ran [`point_cloud_qa.py`](../week3-3d-reconstruction/point_cloud_qa.py) fresh today and independently re-parsed the `.ply` file with a second, separately written script, rather than only re-linking to results from weeks ago, see [Independent Re-Verification](#independent-re-verification-done-for-this-case-study-6-aug-2026) above.
+- Re-ran [`point_cloud_qa.py`](../week3-3d-reconstruction/point_cloud_qa.py) fresh today and independently re-parsed the `.ply` file with a second, separately written script, rather than only re-linking to results from weeks ago, see the "Independent Re-Verification" section above.
