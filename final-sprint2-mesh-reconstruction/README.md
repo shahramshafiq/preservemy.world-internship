@@ -55,7 +55,11 @@ Adjacent-cell depth jitter on the final mesh grid (step=6, sigma=3.0): horiz 95t
 
 ![Mesh rendered from 4 independent angles](output/mesh_multi_angle_render.png)
 
+*4 independent camera angles on the final mesh. The interior reads as a coherent surface; the silhouette edges still show real, honestly-unresolved ridging from the underlying depth heuristic, not hidden or cropped out.*
+
 ![Point cloud vs mesh, same camera angle](output/point_cloud_vs_mesh.png)
+
+*Same camera angle, point cloud vs. mesh. This is a heuristic reconstruction, not a laser scan or multi-view capture, treat the surface as illustrative of the shape, not measured geometry.*
 
 ## Honest limitation
 
