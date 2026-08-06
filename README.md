@@ -87,6 +87,10 @@ PMW-day1/
 │   └── README.md                      <- Extension Sprint 7: full evidence index, every deliverable mapped to a link
 ├── case-study/
 │   └── README.md                      <- Final Sprint 1: project case study on the Jaulian .ply reconstruction
+├── final-sprint2-mesh-reconstruction/
+│   ├── build_mesh.py                  <- Final Sprint 2: turns the point cloud into a real triangulated mesh
+│   ├── render_mesh_qa.py              <- reloads the exported mesh from disk and renders QA views
+│   └── output/                        <- jaulian_monastery_mesh.ply + QA renders
 ├── youthxai_python_colab.ipynb        <- Kaggle Python course applied to 3D reconstruction
 ├── youthxai_linear_regression.ipynb   <- linear regression + Kaggle Intro to ML
 └── youthxai-regression-output/        <- generated plots from the regression notebook
@@ -275,6 +279,7 @@ This section itself is the thing Sprint 4 and Sprint 5 both independently caught
 The internship's 4-day extension unlocked one last stage after reaching 40 verified hours: four 2.5-hour modules due 8 Aug 2026.
 
 - **Final Sprint 1, project case study**: [`case-study/README.md`](case-study/README.md), a full case study on the strongest personal contribution on this track, the validated Jaulian monastery `.ply` reconstruction. Covers the problem, my role, the SfM feasibility test that failed honestly, the monocular pivot, three-way validation, and the Sprint 1 quantitative QA that followed, each claim linked back to the real commit history rather than summarized from memory.
+- **Final Sprint 2, build / research proof**: [`final-sprint2-mesh-reconstruction/`](final-sprint2-mesh-reconstruction/), a real triangulated mesh built on the validated point cloud. The first attempt rendered as a spiky, unusable mess despite passing its own validation checks; measured the actual cause (per-pixel depth-heuristic noise, not outlier jumps), tried two fixes that didn't work, found the one that did (coarser mesh sampling plus stronger smoothing), and documented the real, still-present residual limitation instead of overselling the fix.
 
 ---
 
