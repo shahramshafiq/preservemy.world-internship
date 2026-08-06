@@ -46,6 +46,39 @@ A real, standard `.ply` point cloud (13,375 vertices) of the Jaulian Buddhist mo
 - Passes a quantitative QA pass (density, outlier rate, color sanity, multi-angle render), not just a single visual check
 - Has an honestly documented, literature-backed explanation for why the originally planned multi-view approach was not used, instead of a silently abandoned attempt
 
+## Independent Re-Verification (done for this case study, 6 Aug 2026)
+
+Linking back to old evidence isn't enough on its own, so for this case study I re-ran the verification fresh rather than just re-describing the original results, using two separate methods.
+
+**1. Re-executed [`point_cloud_qa.py`](../week3-3d-reconstruction/point_cloud_qa.py) from a clean run today.** Every number reproduced exactly against what was originally documented in Extension Sprint 1, with no drift:
+
+```
+Loaded 13375 points, header count matched data line count exactly.
+Bounding box size: [5.2839 1.511  2.0046]
+Centroid:          [-0.01552563 -0.38368494  3.49463251]
+Point density:     835.7 points per cubic unit
+Mean NN distance:   0.0254
+Median NN distance: 0.0223
+Outlier threshold (median + 6*MAD): 0.0483
+Points flagged as spatial outliers: 60 / 2000 (3.00%)
+Points with real color variation (structure): 99.3%
+```
+
+The regenerated `multi_angle_qa_render.png` and `nn_distance_histogram.png` came out byte-identical to the versions already committed to the repo (confirmed with `git status` and `git diff --stat` immediately after the re-run, both came back empty), meaning this pipeline is genuinely deterministic and not a fluke that happened to look right once.
+
+**2. Cross-checked the `.ply` file with a second, independent parser**, deliberately not reusing `point_cloud_qa.py`'s own loading function, to rule out a bug in one script's parsing logic silently agreeing with itself:
+
+```
+File size on disk: 446849 bytes (436 KB, matches the write-up)
+Header declares vertex count: 13375
+Actual data line count: 13375
+Header count matches data line count: True
+Malformed lines (not exactly 6 fields): 0
+Lines with an out-of-range color channel: 0
+```
+
+Two independently written pieces of code, reading the same file two different ways, agree exactly. That is a stronger integrity check than either script proving itself alone.
+
 ## What I Learned
 
 - **A failed test is still a real result if you check it properly.** The instinct to force a point cloud out of 12 to 17 shaky matches would have produced geometrically meaningless output. Testing feasibility first, and being willing to report "this does not work" with numbers to back it up, was more valuable than skipping straight to a forced answer.
@@ -72,3 +105,4 @@ Taxila is a real, actively at-risk Pakistani heritage site: Team Taxila's group 
 - Re-read [`week3-3d-reconstruction/README.md`](../week3-3d-reconstruction/README.md) in full and cross-checked every number in this document (inlier counts, vertex count, outlier percentage, file size) against that source file rather than recalling them from memory.
 - Confirmed all three commit hashes cited above against `git log` directly for this folder.
 - Confirmed the embedded images above are the actual files committed to the repo, not placeholders.
+- Re-ran [`point_cloud_qa.py`](../week3-3d-reconstruction/point_cloud_qa.py) fresh today and independently re-parsed the `.ply` file with a second, separately written script, rather than only re-linking to results from weeks ago, see [Independent Re-Verification](#independent-re-verification-done-for-this-case-study-6-aug-2026) above.
