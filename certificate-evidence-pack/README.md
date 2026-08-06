@@ -1,12 +1,14 @@
 # Certificate Evidence Pack
 
-**Shahram Shafiq | AI-Based 3D Scene Reconstruction Track | Module 27 of 27, Extension Sprint 7 (Final Evidence Closure)**
+**Shahram Shafiq | AI-Based 3D Scene Reconstruction Track | Module 31 of 31, Final Sprint 4 (Portfolio & Certificate Evidence)**
+
+**Last updated:** Final Sprint 4, extending the original Extension Sprint 7 version with Part 3 below.
 
 ---
 
 ## What this is
 
-A single index mapping every deliverable across the full internship, portfolio setup on Day 1 through the public write-up in Extension Sprint 6, to a real, viewable GitHub link, with the actual date it was built and one honest line on what was completed. This is the "collect every proof link in one place" module: nothing below is a new artifact, every link points at work that already exists and was already reviewed, this pack just makes it possible to check all of it from one page instead of hunting across the repo.
+A single index mapping every deliverable across the full internship, portfolio setup on Day 1 through this Final Sprint 4, to a real, viewable GitHub link, with the actual date it was built and one honest line on what was completed. This is the "collect every proof link in one place" pack: nothing below is a new artifact except this update itself, every link points at work that already exists and was already reviewed, this pack just makes it possible to check all of it from one page instead of hunting across the repo.
 
 **Repo root:** [github.com/shahramshafiq/PMW-day1](https://github.com/shahramshafiq/PMW-day1)
 **Live final showcase:** [shahramshafiq.github.io/PMW-day1](https://shahramshafiq.github.io/PMW-day1/)
@@ -60,6 +62,19 @@ This is the part this module specifically asks for: every make-up hour block map
 
 ---
 
+## Part 3: Final 10-Hour Sprint
+
+The 4-day program extension's final stage, unlocked after reaching 40 verified hours. Four 2.5-hour modules, each building on real, already-committed work rather than starting fresh.
+
+| Sprint | Commit date (UTC+5) | Task | Claimed hours | Exact work window | Artifact link | Process/commit link | What was completed |
+|---|---|---|---|---|---|---|---|
+| Final 1 | 06 Aug 2026, 15:28-15:52 | Project Case Study | *(from my Final Sprint 1 submission)* | *(from my Final Sprint 1 submission)* | [`case-study/README.md`](https://github.com/shahramshafiq/PMW-day1/blob/main/case-study/README.md) | [Commit history](https://github.com/shahramshafiq/PMW-day1/commits/main/case-study) | Case study on the Jaulian `.ply` reconstruction, my strongest track contribution, plus a fresh independent re-verification: re-ran the QA script cold and cross-checked the file with a second, separately written parser. |
+| Final 2 | 06 Aug 2026, 16:21 | Build / Research Proof | *(from my Final Sprint 2 submission)* | *(from my Final Sprint 2 submission)* | [`final-sprint2-mesh-reconstruction/README.md`](https://github.com/shahramshafiq/PMW-day1/blob/main/final-sprint2-mesh-reconstruction/README.md) | [Commit history](https://github.com/shahramshafiq/PMW-day1/commits/main/final-sprint2-mesh-reconstruction) | Built a real triangulated mesh on the validated point cloud. First attempt rendered as a spiky mess despite clean validation; measured the actual cause, tried two fixes that didn't work, found the one that did, documented the honest residual limitation. |
+| Final 3 | 06 Aug 2026, 16:43-16:45 | Peer Review & Revision | *(from my Final Sprint 3 submission)* | *(from my Final Sprint 3 submission)* | [`final-sprint3-peer-review/README.md`](https://github.com/shahramshafiq/PMW-day1/blob/main/final-sprint3-peer-review/README.md) | [Commit history](https://github.com/shahramshafiq/PMW-day1/commits/main/final-sprint3-peer-review) | Real, checked peer review of a teammate's live page (every citation link tested, one finding honestly reported as unconfirmed), then a genuine revision applied to my own Sprint 2 README, with separate real before/after commits. |
+| Final 4 | *(this submission)* | Portfolio & Certificate Evidence | *(my call, based on real time, max 2.5)* | *(my call, based on real time)* | [`final-sprint4-portfolio-certificate/README.md`](https://github.com/shahramshafiq/PMW-day1/blob/main/final-sprint4-portfolio-certificate/README.md) | [Commit history](https://github.com/shahramshafiq/PMW-day1/commits/main/final-sprint4-portfolio-certificate) | Built the final curated portfolio page (strongest artifacts, process evidence, reflection, next steps, LinkedIn-ready summary), and fixed this evidence pack's own staleness by adding this Part 3, the same recurring gap Sprint 4, Sprint 5, and Sprint 7 already each caught once. |
+
+---
+
 ## What I personally verified while building this pack, not just linked
 
 - **Re-read every extension sprint's actual deliverable file**, not just its commit message, before writing the one-line description above, to make sure each summary matches what the file really contains.
@@ -67,6 +82,7 @@ This is the part this module specifically asks for: every make-up hour block map
 - **Also caught a third, smaller instance of the same root cause while auditing this pack after building it**: the showcase's own sprint-count sentence read "Six sprints" after a Sprint 7 card had already been added, making it "Seven." Same failure mode (an index or summary not updated when the thing it describes changed), one line, fixed and re-verified live on the deployed page.
 - **Cross-checked every commit hash** in the table above against `git log` directly rather than typing them from memory.
 - **Ran a real HTTP check against every link in this document**, see the next section for the actual method and result, not a claim that they "should" work.
+- **Final Sprint 4 update**: added Part 3 above, the 4th real recurrence of the exact same staleness bug Sprint 4, Sprint 5, and Sprint 7 each already caught once, this pack itself had gone stale by stopping at Sprint 7 while four more real modules landed on top of it. Re-checked every link below, including the new Final Sprint entries, with a fresh HTTP request rather than assuming the earlier check still holds.
 
 ---
 
@@ -100,6 +116,18 @@ Per this module's own instructions ("open every link in a private/incognito wind
 200  https://github.com/shahramshafiq/PMW-day1/blob/main/research/source_log_3d_methods.md
 200  https://github.com/shahramshafiq/PMW-day1/blob/main/heritage-api/tests/test_app.py
 200  https://github.com/shahramshafiq/PMW-day1/blob/main/blog-post/3d_reconstruction_walkthrough.md
+```
+
+**Final Sprint 4 re-check**, run fresh rather than assuming the log above still holds:
+
+```
+200  https://github.com/shahramshafiq/PMW-day1/blob/main/case-study/README.md
+200  https://github.com/shahramshafiq/PMW-day1/commits/main/case-study
+200  https://github.com/shahramshafiq/PMW-day1/blob/main/final-sprint2-mesh-reconstruction/README.md
+200  https://github.com/shahramshafiq/PMW-day1/commits/main/final-sprint2-mesh-reconstruction
+200  https://github.com/shahramshafiq/PMW-day1/blob/main/final-sprint3-peer-review/README.md
+200  https://github.com/shahramshafiq/PMW-day1/commits/main/final-sprint3-peer-review
+200  https://github.com/shahramshafiq/PMW-day1/blob/main/final-sprint4-portfolio-certificate/README.md
 ```
 
 Every link returned HTTP 200 on a cold, unauthenticated request. Full log of this check is in the commit history for this file.
