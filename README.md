@@ -1,19 +1,20 @@
-# PreserveMy.World: AI-Based 3D Scene Reconstruction
-### Shahram Shafiq, PreserveMy.World x TechRealm Internship 2026
+# PreserveMy.World x TechRealm Internship: AI-Based 3D Scene Reconstruction
+
+**Shahram Shafiq | Certificate ID TRN-58990 | Issued August 28, 2026**
 
 ---
 
-## What this repo is
+## The short version
 
-This is my working repo for the **PreserveMy.World x TechRealm Impact Internship**, team **EchoFrame Labs**, on the AI-Based 3D Reconstruction track. PreserveMy.World turns phone footage into explorable 3D digital records of heritage sites. My job on this track is to understand and build pieces of the AI pipeline that makes that possible: sourcing footage, comparing reconstruction methods, and building tools around the data.
+Between June and August 2026 I did a real internship on PreserveMy.World's AI-Based 3D Scene Reconstruction track: a non-profit that uses AI, 3D capture, photography, and storytelling to digitally preserve cultural heritage sites before they're lost. This repo is the actual record of that work, not a highlight reel. It has a real Structure-from-Motion test that failed and why, a monocular 3D reconstruction I validated three separate ways, a mesh-building bug I spent real time debugging instead of hiding, a from-scratch neural network checked against Keras, a full-stack web app, two short films, a group heritage-preservation page I led a team on, and every honest limitation I found along the way written down instead of quietly fixed and forgotten.
 
-**Live final showcase:** [shahramshafiq.github.io/preservemy.world-internship](https://shahramshafiq.github.io/preservemy.world-internship/), a single page tying together every deliverable in this repo, the 3D reconstruction, the trained models, both short films, Team Taxila's group work, and the full-stack app.
+**Live final showcase:** [shahramshafiq.github.io/preservemy.world-internship](https://shahramshafiq.github.io/preservemy.world-internship/), one page tying together everything below.
 
 ---
 
-## Who I am
+## About me
 
-**Shahram Shafiq**, CS sophomore at FAST NUCES Islamabad (CGPA 3.66). I currently teach Python to school students aged 8 to 16 at JuniorCoderz. I've built multi-agent AI systems, custom data structures in C++, and a full Hotel Management system in JavaFX. This is my first time working with 3D reconstruction, but it connects directly to what I already know about computer vision and ML.
+**Shahram Shafiq**, CS sophomore at FAST NUCES Islamabad (CGPA 3.66). I teach Python to school students aged 8 to 16 at JuniorCoderz. Before this internship I'd built multi-agent AI systems, custom data structures in C++, and a full Hotel Management system in JavaFX, but 3D reconstruction was new territory. It turned out to connect directly to computer vision and ML fundamentals I already had, which is most of why the pivot in Week 3 (below) worked at all.
 
 - GitHub: [github.com/shahramshafiq](https://github.com/shahramshafiq)
 - LinkedIn: [linkedin.com/in/shahramshafiq](https://linkedin.com/in/shahramshafiq)
@@ -23,7 +24,49 @@ This is my working repo for the **PreserveMy.World x TechRealm Impact Internship
 
 ---
 
-## What's in this repo
+## How this internship actually went
+
+### Getting started
+
+I set up a working portfolio and repo, ran a first 3D-learning script, and hit my first real lesson early: a research pull request sat unmerged on a branch for over a week, meaning the work was invisible to anyone just browsing the repo. I caught it during a strict self-audit in Week 1, merged it, and rewrote the README to actually reflect the repo's real scope. That single habit, checking that finished work is actually visible and actually true rather than just done, ended up running through the entire internship.
+
+### The reconstruction that mattered most
+
+The track's core question was whether I could turn footage of a heritage site into a real 3D digital record. The textbook plan was Structure from Motion (SfM): match features across multiple photos, triangulate, get a point cloud, the same approach COLMAP uses. I had 6 real, individually-sourced photos of Badshahi Mosque in Lahore, so I tested SfM on them properly before assuming it would work: ORB feature detection and RANSAC-verified matching across 3 photo pairs. The result was 12 to 17 geometrically consistent matches out of 2,000+ keypoints per photo, consistently weak across every pair. That is not enough overlap for real triangulation, and later research tied this back to a cited heritage-photogrammetry source: reliable multi-view reconstruction needs roughly 66% photo overlap and 10 to 15 degree camera spacing, which 6 photos taken by different photographers with no shared capture plan were never going to have.
+
+I did not force a point cloud out of weak matches. Instead I pivoted to a monocular reconstruction of a different, single photo (the Jaulian Buddhist monastery ruins at Taxila), built a heuristic depth estimate from image brightness and edge structure, and hand-wrote a real `.ply` point cloud exporter directly against the file format spec rather than pulling one from a library. Validated it three separate ways before calling it done: re-parsed the file to confirm every line was well-formed, reloaded it from disk (not from the in-memory arrays that built it) and re-rendered it to confirm the shape survived the round trip, and cross-checked that render against an earlier module's equivalent visualization. Final result: 13,375 points, 436 KB, opens correctly in MeshLab, CloudCompare, or Blender.
+
+That reconstruction became the spine of the rest of the internship. It got quantitative QA added later (density, outlier detection, color sanity, four-angle rendering, not just one visual check). It got turned into a real triangulated mesh in the program's final stretch, a build that looked visibly wrong on the first attempt despite passing its own validation checks, which took real, measured debugging (not a guess) to actually fix. And it anchored the case study I wrote as my single strongest contribution across the whole track.
+
+### Machine learning, applied to the actual problem
+
+Alongside the reconstruction work, I worked through the youthxAI curriculum end to end: Python fundamentals applied to perspective projection and point clouds, linear regression from scratch checked against scikit-learn and applied to predicting reconstruction time, logistic regression applied to a genuine "is this photo usable" classifier plus the real public Kaggle Titanic dataset, and a neural network (Keras, 784-128-64-10) trained on the full 70,000-image MNIST dataset to 97.18% test accuracy, backed by a from-scratch numpy rebuild of the same architecture landing in the same range, the actual proof the from-scratch version works and not just a claim that it should.
+
+### Two short films, honestly made
+
+I built two videos from real project artifacts rather than stock footage standing in for things that didn't exist: a 75-second short on the Taxila reconstruction assembled from the actual point cloud, the actual ML renders, and procedurally synthesized original audio (no licensed music, even under real pressure to use one), and a personal storytelling piece, "Twenty Guys and a Bus Ride," about three years at Cadet College Hasan Abdal's hostel, narrated with my own recorded voice-over over real photos and published to YouTube. Both had real bugs I caught by actually watching the output rather than trusting a clean render, including one where three-digit zero-padded frame filenames broke alphabetical sort past 999 frames and scrambled the entire video's order.
+
+### Team Taxila: leading a group sprint alongside the individual track
+
+Separate from my individual work, I was team lead for Team Taxila, a cross-institute group building a live location page and presentation on Taxila and the Gandhara learning route, aimed at history students, Buddhist heritage tourists, and museum visitors. The active roster ended up being three of us: **Ruwaida Shakeel** (Air University), **Rabeea Iman** (SADA NUST), and me. I missed the team's one live planning session due to a scheduling conflict, so Rabeea and Ruwaida moved ahead without me, Rabeea built the team's Canva presentation, and Ruwaida built and published a genuinely strong live page.
+
+Ruwaida's page covers the real, current UNESCO warning over cement restoration damaging original stonework at Mohra Moradu and Sirkap (I independently checked the central claim against multiple real news outlets before trusting it), an interactive 3D reconstruction toggle, a client-side tool that lets a visitor turn their own photo into a point cloud using the same monocular heuristic built for this internship, a Gandhara learning-route map, and 13 specific, checkable sources rather than a generic reading list. I contributed a standalone interactive showcase page (a live, drag-to-rotate Three.js viewer of the actual `.ply` reconstruction, now archived in this repo under [`pmw-heritage-showcase-archive/`](pmw-heritage-showcase-archive/) after the internship wrapped) and additional content via a pull request into her live page's repo. Later, for the individual track's own Final Sprint 3, I came back and wrote a full, checked peer review of her page (clarity, evidence, presentation, accuracy, impact, every citation link actually tested against real HTTP requests), and used one real lesson from that review, that an honest caveat should sit next to the thing it describes, to revise my own mesh write-up with real before/after commits.
+
+### Falling short, then catching up: the Extension Sprints
+
+Partway through, my dashboard showed I hadn't logged enough verified hours against the program's original schedule, and TechRealm opened a cohort-wide two-week extension for exactly this. Rather than treat it as busywork, I used it to make seven real, evidence-backed improvements to work that already existed: quantitative point-cloud QA, a cited and independently-verified research source log, a 22-case pytest suite for an API that had zero tests before, a self-audit that caught a real recurring documentation gap (the root README had gone stale again, the exact failure mode an earlier audit had already flagged once), a polish pass on the live showcase itself, a public blog-style write-up of the whole reconstruction journey, and finally a certificate evidence pack indexing every deliverable to a real link. Each sprint had to show a genuine before-and-after, not a new link added just to look busy.
+
+### The last stretch: Final 10-Hour Sprint
+
+After reaching 40 verified hours, the program unlocked one final stage: four 2.5-hour modules over four days to reach the 50-hour certificate threshold. I used them for a project case study on the point cloud reconstruction (with a fresh, independently re-executed verification, not just a link back to old evidence), a real build task that turned the point cloud into a triangulated mesh (including a full, honest debugging log when the first version looked visibly wrong despite passing its own checks), the peer review and revision described above, and a final curated portfolio page tying the whole internship together. That last module also caught the evidence pack's staleness a fourth time and a handful of leftover formatting issues in older files during a full-repo audit, the same "check it's actually still true" habit from Week 1, still running at the very end.
+
+### The certificate
+
+The internship concluded with a **Certificate of Appreciation** from TechRealm, certificate ID **TRN-58990**, issued **August 28, 2026**, recognizing verified contribution in AI-Based 3D Scene Reconstruction, in partnership with Digital Software Market, Home Collective, MagnificentH, and Youth x AI (the same youthxAI curriculum referenced throughout this repo). Signed by Waleed Ajmal, Founder and CEO of TechRealm, who was also my program manager for the whole internship.
+
+---
+
+## What's actually in this repo
 
 ```
 preservemy.world-internship/
@@ -41,7 +84,8 @@ preservemy.world-internship/
 ├── research/
 │   ├── 3d_methods_comparison.md       <- COLMAP vs NeRF vs 3DGS vs MiDaS
 │   ├── depth_map_demo.py              <- monocular depth simulation script
-│   └── depth_output.png               <- generated output
+│   ├── depth_output.png               <- generated output
+│   └── source_log_3d_methods.md       <- Extension Sprint 2: 5 live-verified, cited sources
 ├── footage-research/
 │   ├── badshahi-mosque-multiangle.md  <- sourced, cited, multi-angle footage write-up
 │   └── images/                        <- 6 verified real photos of Badshahi Mosque
@@ -73,8 +117,6 @@ preservemy.world-internship/
 │   └── output/twenty_guys_and_a_bus_ride.mp4  <- the final video
 ├── week4-video-qa-followup/
 │   └── README.md                      <- structured QA pass on the storytelling video, bugs found and fixed
-├── research/
-│   └── source_log_3d_methods.md       <- Extension Sprint 2: 5 live-verified, cited sources
 ├── heritage-api/
 │   ├── app.py                         <- Flask REST API (7 endpoints)
 │   ├── templates/index.html           <- HTML frontend
@@ -83,8 +125,11 @@ preservemy.world-internship/
 │   └── screenshots/                   <- evidence the app runs
 ├── iris-hacks-interest/
 │   └── README.md                      <- Iris Hacks IV interest form confirmation
+├── pmw-heritage-showcase-archive/
+│   ├── index.html                     <- Team Taxila's standalone live 3D viewer, formerly its own repo
+│   └── assets/                        <- its self-contained copies of the photo, pipeline renders, and .ply
 ├── certificate-evidence-pack/
-│   └── README.md                      <- Extension Sprint 7: full evidence index, every deliverable mapped to a link
+│   └── README.md                      <- full evidence index, every deliverable mapped to a link
 ├── case-study/
 │   └── README.md                      <- Final Sprint 1: project case study on the Jaulian .ply reconstruction
 ├── final-sprint2-mesh-reconstruction/
@@ -99,6 +144,8 @@ preservemy.world-internship/
 ├── youthxai_linear_regression.ipynb   <- linear regression + Kaggle Intro to ML
 └── youthxai-regression-output/        <- generated plots from the regression notebook
 ```
+
+**A note on the repo's name:** this was originally built and submitted as `PMW-day1`, and every module above was reviewed and graded under that name. It was renamed to `preservemy.world-internship` after the certificate was issued and every submission had already been marked, GitHub automatically redirects the old repository URLs to this one, so nothing that was ever submitted is broken.
 
 ---
 
@@ -118,21 +165,21 @@ My portfolio lives at [`portfolio/index.html`](portfolio/index.html). It's a sin
 
 ## 3D Reconstruction: What I Learned
 
-I started from near zero on this. Here's my honest understanding so far:
+I started from near zero on this. Here's my honest understanding, built up over the internship:
 
-**The core problem:** You have a flat 2D photo. You want to recover the 3D structure of whatever was photographed. The problem is it's under-constrained: infinitely many 3D scenes could produce the same 2D image.
+**The core problem:** you have a flat 2D photo and want to recover the 3D structure of whatever was photographed. It's under-constrained: infinitely many 3D scenes could produce the same 2D image.
 
-**How photogrammetry solves it:** Take many photos from different angles. Find matching feature points across images (SIFT, ORB). Triangulate those features to get 3D coordinates. This is called Structure from Motion (SfM). The output is a sparse point cloud.
+**How photogrammetry solves it:** take many photos from different angles, find matching feature points across images (SIFT, ORB), triangulate those features into 3D coordinates. This is Structure from Motion (SfM), and the output is a sparse point cloud.
 
-**Dense reconstruction:** To fill in all the gaps, we run Multi-View Stereo (MVS) after SfM. Now we get millions of points.
+**Dense reconstruction:** run Multi-View Stereo (MVS) after SfM to fill in the gaps and get millions of points instead of thousands.
 
-**What NeRF does differently:** Instead of matching features, a Neural Radiance Field trains a small neural network to learn what the scene looks like from any angle. The network takes (x, y, z, viewing direction) and outputs (color, density). Rendering means ray marching through the network. Slow to train but photorealistic.
+**What NeRF does differently:** instead of matching features, a Neural Radiance Field trains a small network to learn what the scene looks like from any angle, taking (x, y, z, viewing direction) and outputting (color, density). Rendering means ray marching through the network. Slow to train, photorealistic results.
 
-**Gaussian Splatting:** Newer than NeRF. Represents the scene as millions of little 3D Gaussian blobs. Renders in real-time. PreserveMy.World is likely using this or something similar for the explorable worlds part.
+**Gaussian Splatting:** newer than NeRF, represents the scene as millions of small 3D Gaussian blobs, renders in real time. Likely what PreserveMy.World uses for its actual "explorable worlds" product.
 
-**Why this matters for heritage:** A historic site can be reconstructed from drone footage or phone video and stored forever as a 3D model. People can explore it virtually even if the physical site is damaged, demolished, or inaccessible.
+**Why this matters for heritage:** a historic site can be reconstructed from drone or phone footage and stored forever as a 3D model, explorable even after the physical site is damaged, demolished, or made inaccessible.
 
-**My Python experiment:** [`3d-learning/point_cloud_basics.py`](3d-learning/point_cloud_basics.py) simulates a photogrammetry reconstruction pipeline from scratch using numpy and matplotlib. It demonstrates depth, projection, and point cloud generation for a heritage building corner. I tried Open3D first but hit a GLIBC version issue on my setup, so I documented the fallback in the experiment notes.
+**My Python experiment:** [`3d-learning/point_cloud_basics.py`](3d-learning/point_cloud_basics.py) simulates a photogrammetry pipeline from scratch using numpy and matplotlib: depth, projection, and point cloud generation for a heritage building corner. I tried Open3D first, hit a GLIBC version issue on my setup, and documented the fallback in the experiment notes instead of hiding it.
 
 ---
 
@@ -140,7 +187,7 @@ I started from near zero on this. Here's my honest understanding so far:
 
 Full post: [`blog-post/medium_draft.md`](blog-post/medium_draft.md)
 
-This covers my learning journey about 3D reconstruction and how I plan to use it at PreserveMy.World.
+My learning journey with 3D reconstruction and how I planned to apply it at PreserveMy.World, written early in the internship.
 
 ---
 
@@ -148,21 +195,15 @@ This covers my learning journey about 3D reconstruction and how I plan to use it
 
 Full comparison: [`research/3d_methods_comparison.md`](research/3d_methods_comparison.md)
 
-**Environment used:** Python 3.11 (Anaconda), Git, VS Code, gh CLI. AI coding assistant (Cursor) used for boilerplate and syntax help; all logic read, understood, and verified manually before committing.
+**Environment used:** Python 3.11 (Anaconda), Git, VS Code, gh CLI. AI coding assistant (Cursor) used for boilerplate and syntax help, all logic read, understood, and verified manually before committing.
 
-I compared four methods: COLMAP, NeRF, 3D Gaussian Splatting (3DGS), and Monocular Depth Estimation (MiDaS). Each entry covers inputs, outputs, hardware needs, difficulty, and where it fits the PMW pipeline.
+Compared four methods: COLMAP, NeRF, 3D Gaussian Splatting (3DGS), and Monocular Depth Estimation (MiDaS), each entry covering inputs, outputs, hardware needs, difficulty, and where it fits the PMW pipeline.
 
 [`research/depth_map_demo.py`](research/depth_map_demo.py) simulates monocular depth estimation: generates a synthetic depth map of a heritage building (pillars, facade, arched doorway), converts it to a 3D point cloud via back-projection, and saves a 3-panel visualization at [`research/depth_output.png`](research/depth_output.png).
 
-**Key finding:** for PMW's "explorable worlds" feature, the full production pipeline is:
-1. Capture footage (phone or drone)
-2. Extract frames, run **COLMAP** to get camera poses and a sparse point cloud
-3. Feed into **3D Gaussian Splatting** for real-time navigable output
-4. Optional: run **NeRF** (Nerfstudio) for high quality archival renders
+**Key finding:** for PMW's "explorable worlds" feature, the full production pipeline is likely capture footage, run COLMAP for camera poses and a sparse point cloud, feed that into 3D Gaussian Splatting for real-time navigable output, and optionally run NeRF (Nerfstudio) for high-quality archival renders. Monocular depth (MiDaS) fills in when only a single photo of a site exists, exactly the situation the Week 3 reconstruction ended up in.
 
-Monocular depth (MiDaS) is useful when only a single photo of a site exists.
-
-**Tutorials watched:** Computerphile "How does 3D Scanning Work?", Computerphile "Neural Radiance Fields", "Structure from Motion explained", Open3D documentation, Nerfstudio documentation.
+**Tutorials watched:** Computerphile's "How does 3D Scanning Work?" and "Neural Radiance Fields," "Structure from Motion explained," Open3D documentation, Nerfstudio documentation.
 
 ---
 
@@ -178,7 +219,7 @@ Covers the 7 Kaggle Python course topics (variables, functions, conditionals, li
 
 Full app: [`heritage-api/`](heritage-api/)
 
-A full stack Flask + React web app modeling the actual PMW reconstruction pipeline. Flask REST API with 7 endpoints serving data for 4 Pakistani heritage sites, two frontends (a Flask-rendered HTML reference page and a React dashboard with an animated 3D point cloud), and a reconstruction job simulator. Tested via curl, Postman, and a direct LAN IP hit. Full setup and API docs in [`heritage-api/README.md`](heritage-api/README.md).
+A full-stack Flask and React web app modeling the actual PMW reconstruction pipeline: a Flask REST API with 7 endpoints serving data for 4 real Pakistani heritage sites, two frontends (a Flask-rendered HTML reference page and a React dashboard with an animated 3D point cloud), and a reconstruction job simulator. Tested via curl, Postman, and a direct LAN IP hit. Full setup and API docs in [`heritage-api/README.md`](heritage-api/README.md).
 
 ---
 
@@ -186,7 +227,7 @@ A full stack Flask + React web app modeling the actual PMW reconstruction pipeli
 
 Full write-up: [`week1-ai-review.md`](week1-ai-review.md)
 
-Ran a strict AI-assisted audit against my own GitHub work instead of asking for generic feedback. The top finding was real: a PR merging research into `main` had been open for over a week without being merged, meaning that work was invisible to anyone browsing the default branch. Fixed it, rewrote the README to reflect the true scope of the repo, and documented what worked and failed about the prompting process itself.
+Ran a strict AI-assisted audit against my own GitHub work instead of asking for generic feedback. The top finding was real: a pull request merging research into `main` had been open for over a week without being merged, meaning that work was invisible to anyone browsing the default branch. Fixed it, rewrote the README to reflect the true scope of the repo, and documented what worked and failed about the prompting process itself. Revisited twice more later in the internship (see Extension Sprint 4 below) when the same failure mode quietly recurred.
 
 ---
 
@@ -194,7 +235,7 @@ Ran a strict AI-assisted audit against my own GitHub work instead of asking for 
 
 Full write-up: [`footage-research/badshahi-mosque-multiangle.md`](footage-research/badshahi-mosque-multiangle.md)
 
-Sourced, downloaded, and individually verified 6 real photos of Badshahi Mosque covering distinct angles (front facade, aerial, interior, wide front view with garden, minaret side angle, elevated panorama), then wrote a technical piece auditing what the footage set does and does not cover for an actual 3D reconstruction pipeline. Cross-checked against the simulated coverage number used for the same site in heritage-api.
+Sourced, downloaded, and individually verified 6 real photos of Badshahi Mosque covering distinct angles (front facade, aerial, interior, wide front view with garden, minaret side angle, elevated panorama), then wrote a technical piece auditing what the footage set does and does not cover for an actual 3D reconstruction pipeline. This is the same photo set the Week 3 SfM feasibility test later ran on, and honestly failed on.
 
 ---
 
@@ -202,7 +243,7 @@ Sourced, downloaded, and individually verified 6 real photos of Badshahi Mosque 
 
 Write-up: [`heritage-writing/mohenjo-daro.md`](heritage-writing/mohenjo-daro.md)
 
-A 451-word researched piece on Mohenjo-daro: what it is, why it matters, what a visitor should notice. Every historical fact, construction date, population, UNESCO status, the salinity threat, the 2012 and 2022 conservation warnings, is checked against Wikipedia and cross-verified against a second independent source (Ancient Origins and UNESCO's own World Heritage Centre listing) before being written down.
+A 451-word researched piece on Mohenjo-daro: what it is, why it matters, what a visitor should notice. Every historical fact, construction date, population, UNESCO status, the salinity threat, the 2012 and 2022 conservation warnings, checked against Wikipedia and cross-verified against a second independent source before being written down.
 
 ---
 
@@ -210,7 +251,7 @@ A 451-word researched piece on Mohenjo-daro: what it is, why it matters, what a 
 
 Notebook: [`youthxai_linear_regression.ipynb`](youthxai_linear_regression.ipynb)
 
-Linear regression implemented from scratch with gradient descent and checked against scikit-learn (both converge on the same slope and intercept), applied to predicting reconstruction time from photo count. Followed by the core Kaggle Intro to ML lessons (data exploration, first model, validation, underfitting/overfitting, random forests) applied to a simulated 220-job heritage reconstruction dataset. Every cell in this notebook was executed and verified before committing; the generated plots are in [`youthxai-regression-output/`](youthxai-regression-output/).
+Linear regression implemented from scratch with gradient descent and checked against scikit-learn (both converge on the same slope and intercept), applied to predicting reconstruction time from photo count. Followed by the core Kaggle Intro to ML lessons (data exploration, first model, validation, underfitting/overfitting, random forests) applied to a simulated 220-job heritage reconstruction dataset. Every cell executed and verified before committing, generated plots in [`youthxai-regression-output/`](youthxai-regression-output/).
 
 ---
 
@@ -218,7 +259,7 @@ Linear regression implemented from scratch with gradient descent and checked aga
 
 Pipeline and write-up: [`ml-viz-ar-capture3d/`](ml-viz-ar-capture3d/)
 
-One real photo of the Jaulian monastery ruins at Taxila run through three stages: Sobel gradient and Harris corner feature detection, an AR-style line overlay simulating what a heritage app would show live on a phone camera, and a heuristic capture-to-3D colored point cloud. Taxila was picked on purpose to tie into the Team Taxila group sprint running in parallel. Two real bugs were caught by actually looking at the rendered output rather than trusting the code ran without errors: the point cloud stage initially treated the sky as a physical surface and warped the whole projection (fixed by measuring this photo's actual sunset-lit sky/haze brightness and masking it out), and the AR line overlay initially produced 271 noisy lines blanketing the frame (fixed by tightening the edge and line-detection thresholds down to 25 clean, meaningful lines).
+One real photo of the Jaulian monastery ruins at Taxila run through three stages: Sobel gradient and Harris corner feature detection, an AR-style line overlay simulating what a heritage app would show live on a phone camera, and a heuristic capture-to-3D colored point cloud. Two real bugs were caught by actually looking at the rendered output rather than trusting that the code ran without errors: the point cloud stage initially treated the sky as a physical surface and warped the whole projection (fixed by measuring this photo's actual sky brightness and masking it out), and the AR line overlay initially produced 271 noisy lines blanketing the frame (fixed by tightening thresholds down to 25 clean, meaningful lines).
 
 ---
 
@@ -226,7 +267,7 @@ One real photo of the Jaulian monastery ruins at Taxila run through three stages
 
 Write-up: [`week3-3d-reconstruction/`](week3-3d-reconstruction/)
 
-Tested whether real multi-view Structure from Motion (feature matching and triangulation, what COLMAP does) was viable on the 6 already-curated Badshahi Mosque photos before choosing an approach: ORB feature matching and RANSAC geometric verification across 3 photo pairs found only 12 to 17 consistent inliers out of 2000+ keypoints per photo, not enough real overlap for triangulation, since these are photos from different photographers rather than a controlled multi-view capture. Built a monocular reconstruction of the Jaulian monastery ruins instead (extending the approach from `ml-viz-ar-capture3d/`), and exported it as a real `.ply` point cloud file, hand-written against the format spec rather than pulled from a library. Validated three separate ways: manually re-parsed the file to confirm every line is well-formed, reloaded it from disk and re-rendered it to confirm the geometry survives the round trip, and compared it against the earlier module's equivalent visualization.
+The full technical detail behind the flagship story told above: the real SfM feasibility test (12 to 17 consistent matches out of 2,000+ keypoints per photo, not enough for triangulation), the pivot to a monocular reconstruction of the Jaulian monastery, and the hand-written `.ply` exporter validated three separate ways.
 
 ---
 
@@ -234,7 +275,7 @@ Tested whether real multi-view Structure from Motion (feature matching and trian
 
 Notebook: [`week3-logistic-regression/`](week3-logistic-regression/)
 
-Logistic regression from scratch, checked against scikit-learn, applied to a genuine reconstruction problem: classifying whether a captured photo is usable, replacing a hand-guessed threshold from an earlier notebook with an actual trained classifier. Followed by the real, public Kaggle Titanic dataset (891 passengers, verified against known statistics before use), cleaned and run through a proper 80/20 train/validation split for an honest accuracy number, then exported as a Kaggle-format submission CSV.
+Logistic regression from scratch, checked against scikit-learn, applied to a genuine reconstruction problem: classifying whether a captured photo is usable, replacing a hand-guessed threshold from an earlier notebook with an actual trained classifier. Followed by the real, public Kaggle Titanic dataset (891 passengers, verified against known statistics before use), cleaned and run through a proper 80/20 train/validation split, then exported as a Kaggle-format submission CSV.
 
 ---
 
@@ -242,7 +283,7 @@ Logistic regression from scratch, checked against scikit-learn, applied to a gen
 
 Write-up: [`week3-story-film/`](week3-story-film/)
 
-An AI-based 3D reconstruction project has no camera and no live-action footage, so this builds the honest equivalent: a real, playable 75-second MP4 assembled from genuine project artifacts (a real photo, real generated visualizations, a real rotating render of the actual `.ply` point cloud), with a real synthesized audio track (ambient pad, transition whooshes, a reveal chime, a tension tone), Ken Burns motion, and crossfade dissolves, no voiceover by team decision since only one of three teammates could realistically record one. Caught two real bugs by checking output instead of trusting a clean exit code, including one serious one where the entire video played back scrambled out of order (3-digit zero-padded frame filenames broke alphabetical sort past 999 frames). Fixed, then re-verified the rebuilt version from scratch: correct scene order across 9 sample timestamps, genuine point cloud rotation, and the audio track checked for silence gaps, clipping, and actual dynamic variation, not just assumed to sound right.
+A real, playable 75-second MP4 assembled from genuine project artifacts (a real photo, real generated visualizations, a real rotating render of the actual `.ply` point cloud), with a synthesized original audio track, Ken Burns motion, and crossfade dissolves, no voiceover by team decision since only one of three teammates could realistically record one. Caught two real bugs by checking output instead of trusting a clean exit code, including one serious one where the entire video played back scrambled out of order (three-digit zero-padded frame filenames broke alphabetical sort past 999 frames). Fixed and re-verified from scratch: correct scene order across sample timestamps, genuine point cloud rotation, and the audio track checked for silence gaps and clipping rather than assumed to sound right.
 
 ---
 
@@ -250,7 +291,7 @@ An AI-based 3D reconstruction project has no camera and no live-action footage, 
 
 Notebook and deck: [`week4-neural-networks/`](week4-neural-networks/)
 
-A Keras Sequential model (784-128-64-10, matching the session's own architecture slide) trained on the real, full 70,000-image MNIST dataset, 97.18% test accuracy on 10,000 held-out images the model never saw. Backed by a from-scratch numpy rebuild of the same architecture (manual forward pass and backpropagation, no library), landing in the same range on the same test set, the actual proof the from-scratch version does what the library does, not just a claim. Caught a real bug while building this: `matplotlib.use('Agg')` was silently blocking every chart from actually embedding in the executed notebook, caught by checking the saved file's real image data instead of trusting that the plotting cells ran without error.
+A Keras Sequential model (784-128-64-10) trained on the real, full 70,000-image MNIST dataset, 97.18% test accuracy on 10,000 held-out images the model never saw. Backed by a from-scratch numpy rebuild of the same architecture (manual forward pass and backpropagation, no library), landing in the same range on the same test set. Caught a real bug while building this: `matplotlib.use('Agg')` was silently blocking every chart from actually embedding in the executed notebook, caught by checking the saved file's real image data instead of trusting that the plotting cells ran without error.
 
 ---
 
@@ -258,34 +299,32 @@ A Keras Sequential model (784-128-64-10, matching the session's own architecture
 
 Write-up: [`week4-home-story/`](week4-home-story/) &middot; live: [youtu.be/5nhRp_gWVRs](https://youtu.be/5nhRp_gWVRs)
 
-What home means to me: three years at Cadet College Hasan Abdal's hostel, the routine, basketball, away fixtures at sister colleges, and the twenty guys in my wing, told with my own recorded voice-over over real photos of the team, the wing, and the campus gate, plus licensed B-roll for the two beats with no real photo available. Structured QA pass documented separately in [`week4-video-qa-followup/`](week4-video-qa-followup/): four real bugs found and fixed, a voice-over that was technically present but inaudible under the music, audio clipping traced to two distinct causes in the ffmpeg filter chain, caption-to-narration sync drift from crossfade compounding, and one B-roll clip that turned out to show mismatched party footage.
+What home means to me: three years at Cadet College Hasan Abdal's hostel, the routine, basketball, away fixtures at sister colleges, and the twenty guys in my wing, told with my own recorded voice-over over real photos of the team, the wing, and the campus gate, plus licensed B-roll for the two beats with no real photo available. Structured QA pass documented separately in [`week4-video-qa-followup/`](week4-video-qa-followup/): four real bugs found and fixed, a voice-over that was technically present but inaudible under the music, audio clipping traced to two distinct causes in the ffmpeg filter chain, caption-to-narration sync drift, and one B-roll clip that turned out to show mismatched footage on closer inspection.
 
 ---
 
 ## Extension Sprints: Verified Make-up Work
 
-Real, evidence-backed improvements to existing deliverables, not new filler:
+Seven sprints during the cohort-wide two-week program extension, each one a real, evidence-backed improvement to an existing deliverable, not new filler added just to log hours:
 
 - **Sprint 1, quantitative point-cloud QA**: [`week3-3d-reconstruction/point_cloud_qa.py`](week3-3d-reconstruction/point_cloud_qa.py) added density, nearest-neighbor outlier detection, a color sanity check, and 4-angle rendering to the Taxila `.ply` reconstruction, which previously only had a single visual reload check.
-- **Sprint 2, cited source log**: [`research/source_log_3d_methods.md`](research/source_log_3d_methods.md), 5 sources on COLMAP, NeRF, 3D Gaussian Splatting, and monocular depth, each independently live-verified, tied directly back to the real Week 3 SfM result (12 to 17 matches per photo pair) instead of left as generic references.
+- **Sprint 2, cited source log**: [`research/source_log_3d_methods.md`](research/source_log_3d_methods.md), 5 sources on COLMAP, NeRF, 3D Gaussian Splatting, and monocular depth, each independently live-verified, tied directly back to the real Week 3 SfM result instead of left as generic references.
 - **Sprint 3, real test suite**: [`heritage-api/tests/test_app.py`](heritage-api/tests/test_app.py), 22 pytest cases covering every endpoint, up from 0 tests before. Proved the suite actually catches regressions by deliberately breaking a rule, watching the test fail, then reverting.
-- **Sprint 4, this revision**: reviewed [`week1-ai-review.md`](week1-ai-review.md) against the judging rubric and found the exact failure mode it originally flagged, a stale root README, had quietly recurred (everything from Week 4 onward was missing, including the live showcase site). Fixed it, this README is the result, and documented the whole before/after in the revision itself.
-- **Sprint 5, final artifact improvement**: polished the live showcase itself ([`index.html`](index.html)), adding a mentor note and the Extension Sprints section it had never had, then re-verified every link, image, and video on the deployed page.
-- **Sprint 6, public write-up**: [`blog-post/3d_reconstruction_walkthrough.md`](blog-post/3d_reconstruction_walkthrough.md), a public walkthrough of the 3D reconstruction journey: the real SfM test failure, the pivot to a monocular reconstruction, and the QA hardening from Sprint 1. Caught and corrected a factual error in its own first draft before publishing (the failed SfM attempt and the successful reconstruction were on two different photo sets, an early draft conflated them).
-- **Sprint 7, certificate evidence pack**: [`certificate-evidence-pack/README.md`](certificate-evidence-pack/README.md), a single index mapping every deliverable across the full internship, portfolio through this line, to its real GitHub link and completion date.
-
-This section itself is the thing Sprint 4 and Sprint 5 both independently caught going stale (missing the newest, most rubric-relevant work). Keeping it current through Sprint 7 is the direct fix, not a repeat of the same gap a third time.
+- **Sprint 4, this revision**: reviewed [`week1-ai-review.md`](week1-ai-review.md) against the judging rubric and found the exact failure mode it originally flagged, a stale root README, had quietly recurred (everything from Week 4 onward was missing, including the live showcase). Fixed it and documented the whole before/after.
+- **Sprint 5, final artifact improvement**: polished the live showcase itself ([`index.html`](index.html)), adding a mentor note and an Extension Sprints section it had never had, then re-verified every link, image, and video on the deployed page.
+- **Sprint 6, public write-up**: [`blog-post/3d_reconstruction_walkthrough.md`](blog-post/3d_reconstruction_walkthrough.md), a public walkthrough of the reconstruction journey, the SfM failure, the pivot, the QA hardening. Caught and corrected a factual error in its own first draft before publishing.
+- **Sprint 7, certificate evidence pack**: [`certificate-evidence-pack/README.md`](certificate-evidence-pack/README.md), a single index mapping every deliverable across the internship to its real GitHub link and completion date.
 
 ---
 
 ## Final 10-Hour Sprint: Certificate Completion Work
 
-The internship's 4-day extension unlocked one last stage after reaching 40 verified hours: four 2.5-hour modules due 8 Aug 2026.
+Four 2.5-hour modules over the internship's last four days, reaching the 50-hour certificate threshold:
 
-- **Final Sprint 1, project case study**: [`case-study/README.md`](case-study/README.md), a full case study on the strongest personal contribution on this track, the validated Jaulian monastery `.ply` reconstruction. Covers the problem, my role, the SfM feasibility test that failed honestly, the monocular pivot, three-way validation, and the Sprint 1 quantitative QA that followed, each claim linked back to the real commit history rather than summarized from memory.
-- **Final Sprint 2, build / research proof**: [`final-sprint2-mesh-reconstruction/`](final-sprint2-mesh-reconstruction/), a real triangulated mesh built on the validated point cloud. The first attempt rendered as a spiky, unusable mess despite passing its own validation checks; measured the actual cause (per-pixel depth-heuristic noise, not outlier jumps), tried two fixes that didn't work, found the one that did (coarser mesh sampling plus stronger smoothing), and documented the real, still-present residual limitation instead of overselling the fix.
-- **Final Sprint 3, peer review and revision**: [`final-sprint3-peer-review/`](final-sprint3-peer-review/), a real, checked peer review of Ruwaida Shakeel's live Team Taxila page (clarity, evidence, presentation, accuracy, impact, every citation link actually tested), plus a genuine revision applied to my own Final Sprint 2 README as a direct result of what the review surfaced, with real before/after commits.
-- **Final Sprint 4, portfolio and certificate evidence**: [`final-sprint4-portfolio-certificate/`](final-sprint4-portfolio-certificate/), the final curated portfolio page tying the whole internship together (strongest artifacts, process evidence, reflection, next steps, LinkedIn-ready summary), the last of the 31 modules. Also fixed the [Certificate Evidence Pack](certificate-evidence-pack/README.md)'s own staleness as part of this module, the 4th real recurrence of the same index-goes-stale bug this repo keeps catching and fixing.
+- **Final Sprint 1, project case study**: [`case-study/README.md`](case-study/README.md), a full case study on the strongest personal contribution on this track, the validated Jaulian monastery `.ply` reconstruction, including a fresh, independently re-executed verification rather than just a link back to old evidence.
+- **Final Sprint 2, build / research proof**: [`final-sprint2-mesh-reconstruction/`](final-sprint2-mesh-reconstruction/), a real triangulated mesh built on the validated point cloud. The first attempt rendered as a spiky, unusable mess despite passing its own validation checks; measured the actual cause, tried two fixes that didn't work, found the one that did, and documented the real, still-present residual limitation instead of overselling the fix.
+- **Final Sprint 3, peer review and revision**: [`final-sprint3-peer-review/`](final-sprint3-peer-review/), a real, checked peer review of Ruwaida Shakeel's live Team Taxila page, plus a genuine revision applied to my own Final Sprint 2 README as a direct result of what the review surfaced, with real before/after commits.
+- **Final Sprint 4, portfolio and certificate evidence**: [`final-sprint4-portfolio-certificate/`](final-sprint4-portfolio-certificate/), the final curated portfolio page tying the whole internship together, plus a fix to the Certificate Evidence Pack's staleness and a full-repo audit that caught leftover formatting issues in older files.
 
 ---
 
@@ -297,10 +336,8 @@ The internship's 4-day extension unlocked one last stage after reaching 40 verif
 
 ## Mission Connection
 
-PreserveMy.World's core mission is to document and preserve cultural heritage before it disappears. 3D reconstruction is the technical engine that makes this possible, turning footage of a mosque, fort, or old city street into a navigable digital record. As someone on the AI track, my job is to understand and eventually contribute to that pipeline.
-
-Pakistan has hundreds of heritage sites that are underdocumented. Mohenjo-daro, one of the earliest cities of the Indus Valley civilization, faces active deterioration and is a priority target in my heritage-api data model. This isn't just a technical exercise; there's a real gap to fill.
+PreserveMy.World's core mission is to document and preserve cultural heritage before it disappears. 3D reconstruction is the technical engine that makes this possible, turning footage of a mosque, fort, or old city street into a navigable digital record. Pakistan has hundreds of underdocumented heritage sites. Mohenjo-daro faces active deterioration and sits as a priority site in my heritage-api data model. Taxila, the site of both my individual reconstruction work and Team Taxila's group page, received a real, formal UNESCO warning in 2026 over restoration work damaging original stonework. This wasn't a hypothetical exercise about a mission statement, there was a real, current gap to document.
 
 ---
 
-*Portfolio, a validated 3D point-cloud reconstruction with quantitative QA, three applied ML notebooks (linear regression, logistic regression, a 97.18%-accuracy neural network), a full stack heritage reconstruction API with a real test suite, two short films, a cited research source log, a self-revising repo audit, and a live final showcase all live in this repo.*
+*Portfolio, a validated 3D point-cloud reconstruction with quantitative QA and a real triangulated mesh, three applied ML notebooks (linear regression, logistic regression, a 97.18%-accuracy neural network), a full-stack heritage reconstruction API with a real test suite, two short films, a cited research source log, a self-revising repo audit, a led group heritage-preservation page, and a live final showcase all live in this repo, and all of it led to a real certificate, TRN-58990, issued August 28, 2026.*
