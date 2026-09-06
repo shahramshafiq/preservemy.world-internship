@@ -14,7 +14,7 @@ Between June and August 2026 I did a real internship on PreserveMy.World's AI-Ba
 
 ## About me
 
-**Shahram Shafiq**, CS sophomore at FAST NUCES Islamabad (CGPA 3.66). I teach Python to school students aged 8 to 16 at JuniorCoderz. Before this internship I'd built multi-agent AI systems, custom data structures in C++, and a full Hotel Management system in JavaFX, but 3D reconstruction was new territory. It turned out to connect directly to computer vision and ML fundamentals I already had, which is most of why the pivot in Week 3 (below) worked at all.
+**Shahram Shafiq**, CS junior at FAST NUCES Islamabad (CGPA 3.66). I teach Python to school students aged 8 to 16 at JuniorCoderz. Before this internship I'd built multi-agent AI systems, custom data structures in C++, and a full Hotel Management system in JavaFX, but 3D reconstruction was new territory. It turned out to connect directly to computer vision and ML fundamentals I already had, which is most of why the pivot in Week 3 (below) worked at all.
 
 - GitHub: [github.com/shahramshafiq](https://github.com/shahramshafiq)
 - LinkedIn: [linkedin.com/in/shahramshafiq](https://linkedin.com/in/shahramshafiq)
