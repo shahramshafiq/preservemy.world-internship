@@ -7,7 +7,7 @@
 
 This is my working repo for the **PreserveMy.World x TechRealm Impact Internship**, team **EchoFrame Labs**, on the AI-Based 3D Reconstruction track. PreserveMy.World turns phone footage into explorable 3D digital records of heritage sites. My job on this track is to understand and build pieces of the AI pipeline that makes that possible: sourcing footage, comparing reconstruction methods, and building tools around the data.
 
-**Live final showcase:** [shahramshafiq.github.io/PMW-day1](https://shahramshafiq.github.io/PMW-day1/), a single page tying together every deliverable in this repo, the 3D reconstruction, the trained models, both short films, Team Taxila's group work, and the full-stack app.
+**Live final showcase:** [shahramshafiq.github.io/preservemy.world-internship](https://shahramshafiq.github.io/preservemy.world-internship/), a single page tying together every deliverable in this repo, the 3D reconstruction, the trained models, both short films, Team Taxila's group work, and the full-stack app.
 
 ---
 
@@ -26,7 +26,7 @@ This is my working repo for the **PreserveMy.World x TechRealm Impact Internship
 ## What's in this repo
 
 ```
-PMW-day1/
+preservemy.world-internship/
 ├── README.md                          <- you are here
 ├── index.html                         <- live final showcase (GitHub Pages)
 ├── week1-ai-review.md                 <- strict repo audit, merge fix, prompt reflection, revised in Extension Sprint 4

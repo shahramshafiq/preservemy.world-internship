@@ -44,4 +44,4 @@ The monocular heuristic is a real stopgap, not a long-term answer. The honest ne
 
 ---
 
-**Full technical detail and code:** [github.com/shahramshafiq/PMW-day1/tree/main/week3-3d-reconstruction](https://github.com/shahramshafiq/PMW-day1/tree/main/week3-3d-reconstruction), QA follow-up in the same folder's [`point_cloud_qa.py`](https://github.com/shahramshafiq/PMW-day1/blob/main/week3-3d-reconstruction/point_cloud_qa.py). Live project showcase: [shahramshafiq.github.io/PMW-day1](https://shahramshafiq.github.io/PMW-day1/).
+**Full technical detail and code:** [github.com/shahramshafiq/preservemy.world-internship/tree/main/week3-3d-reconstruction](https://github.com/shahramshafiq/preservemy.world-internship/tree/main/week3-3d-reconstruction), QA follow-up in the same folder's [`point_cloud_qa.py`](https://github.com/shahramshafiq/preservemy.world-internship/blob/main/week3-3d-reconstruction/point_cloud_qa.py). Live project showcase: [shahramshafiq.github.io/preservemy.world-internship](https://shahramshafiq.github.io/preservemy.world-internship/).

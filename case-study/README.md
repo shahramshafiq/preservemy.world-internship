@@ -16,10 +16,10 @@ This was solo, individually-authored work, not a group deliverable. I wrote ever
 
 ## Evidence
 
-- **Real commit history across three separate work sessions**, not one squashed commit: [full commit log for this folder](https://github.com/shahramshafiq/PMW-day1/commits/main/week3-3d-reconstruction)
-  - [`4858a3f`](https://github.com/shahramshafiq/PMW-day1/commit/4858a3f) &middot; 6 Jul 2026 &middot; original SfM test + monocular `.ply` build
-  - [`89077b0`](https://github.com/shahramshafiq/PMW-day1/commit/89077b0) &middot; 21 Jul 2026 &middot; Extension Sprint 1, quantitative point-cloud QA added
-  - [`8da5b1c`](https://github.com/shahramshafiq/PMW-day1/commit/8da5b1c) &middot; 22 Jul 2026 &middot; Extension Sprint 2, cited source log tying the SfM result to real literature
+- **Real commit history across three separate work sessions**, not one squashed commit: [full commit log for this folder](https://github.com/shahramshafiq/preservemy.world-internship/commits/main/week3-3d-reconstruction)
+  - [`4858a3f`](https://github.com/shahramshafiq/preservemy.world-internship/commit/4858a3f) &middot; 6 Jul 2026 &middot; original SfM test + monocular `.ply` build
+  - [`89077b0`](https://github.com/shahramshafiq/preservemy.world-internship/commit/89077b0) &middot; 21 Jul 2026 &middot; Extension Sprint 1, quantitative point-cloud QA added
+  - [`8da5b1c`](https://github.com/shahramshafiq/preservemy.world-internship/commit/8da5b1c) &middot; 22 Jul 2026 &middot; Extension Sprint 2, cited source log tying the SfM result to real literature
 - **The reconstruction itself:** [`output/jaulian_monastery_taxila.ply`](../week3-3d-reconstruction/output/jaulian_monastery_taxila.ply), 13,375 vertices, 436 KB, openable in MeshLab, CloudCompare, or Blender.
 - **Full technical write-up:** [`week3-3d-reconstruction/README.md`](../week3-3d-reconstruction/README.md)
 - **Screenshots / renders proving the work is real, not claimed:**

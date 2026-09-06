@@ -10,7 +10,7 @@
 
 A single, self-contained web page for **Team Taxila** that curates the strongest footage and reconstruction work into one narrative: a real photo of the Jaulian monastery ruins at Taxila, the actual feature-detection and depth math behind reconstruction, and a genuine, live, drag-to-rotate 3D point cloud running in the browser via Three.js, not a screenshot or a mockup.
 
-Everything shown is real work already built and verified in [`shahramshafiq/PMW-day1`](https://github.com/shahramshafiq/PMW-day1), pulled into this dedicated repo so it can be a clean, fully public, login-free web page, and scoped specifically to Taxila rather than mixing in unrelated sites from other individual modules.
+Everything shown is real work already built and verified in [`shahramshafiq/preservemy.world-internship`](https://github.com/shahramshafiq/preservemy.world-internship), pulled into this dedicated repo so it can be a clean, fully public, login-free web page, and scoped specifically to Taxila rather than mixing in unrelated sites from other individual modules.
 
 ---
 

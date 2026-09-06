@@ -11,8 +11,8 @@
 - GitHub: [github.com/shahramshafiq](https://github.com/shahramshafiq)
 - Portfolio: [shahramshafiq-portfolio.vercel.app](https://shahramshafiq-portfolio.vercel.app)
 - Email: shahramshafiqgoraya4363@gmail.com
-- Repo: [github.com/shahramshafiq/PMW-day1](https://github.com/shahramshafiq/PMW-day1)
-- Live final showcase: [shahramshafiq.github.io/PMW-day1](https://shahramshafiq.github.io/PMW-day1/)
+- Repo: [github.com/shahramshafiq/preservemy.world-internship](https://github.com/shahramshafiq/preservemy.world-internship)
+- Live final showcase: [shahramshafiq.github.io/preservemy.world-internship](https://shahramshafiq.github.io/preservemy.world-internship/)
 
 ## Track
 
@@ -40,7 +40,7 @@ Full list of every deliverable across the whole internship, not just the highlig
 Every claim above links to a real, viewable file or a real commit, not a summary asking to be trusted. The two places that make this checkable end to end:
 
 - **[Certificate Evidence Pack](../certificate-evidence-pack/README.md)**, a single index mapping all 17 core deliverables, all 7 Extension Sprints, and all 4 Final Sprints to their real GitHub links and dates.
-- **Commit history**: [github.com/shahramshafiq/PMW-day1/commits/main](https://github.com/shahramshafiq/PMW-day1/commits/main), every real work session, not one squashed history.
+- **Commit history**: [github.com/shahramshafiq/preservemy.world-internship/commits/main](https://github.com/shahramshafiq/preservemy.world-internship/commits/main), every real work session, not one squashed history.
 
 The recurring discipline across this whole repo, re-execute code fresh rather than trust a prior run, checksum or byte-compare claims against the live file, cold HTTP-check every link before calling a module done, is documented as it happened in [`week1-ai-review.md`](../week1-ai-review.md) and carried through every Extension Sprint and Final Sprint since.
 
@@ -76,8 +76,8 @@ Over the internship I tested real Structure-from-Motion on curated heritage phot
 
 The single biggest thing I learned: a failed test reported honestly, with real numbers, is worth more than a forced success. Every deliverable in this internship is public and linked to real evidence, not just claimed.
 
-Repo: github.com/shahramshafiq/PMW-day1
-Live showcase: shahramshafiq.github.io/PMW-day1
+Repo: github.com/shahramshafiq/preservemy.world-internship
+Live showcase: shahramshafiq.github.io/preservemy.world-internship
 
 #PreserveMyWorld #TechRealm #3DReconstruction #ComputerVision #Internship
 ```

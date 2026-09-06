@@ -6,7 +6,7 @@
 
 ## Revision note (Extension Sprint 4: Review & Revision)
 
-**Old version** (before this revision): [github.com/shahramshafiq/PMW-day1/blob/18dd2f1/week1-ai-review.md](https://github.com/shahramshafiq/PMW-day1/blob/18dd2f15b79c3a49659b40e67868416a9129653d/week1-ai-review.md)
+**Old version** (before this revision): [github.com/shahramshafiq/preservemy.world-internship/blob/18dd2f1/week1-ai-review.md](https://github.com/shahramshafiq/preservemy.world-internship/blob/18dd2f15b79c3a49659b40e67868416a9129653d/week1-ai-review.md)
 **Revised version**: this file, on `main`
 **What changed:** Steps 1 to 5 below are the untouched original review. Steps 6 to 8 are new: a rubric-based review of the original findings against the general judging rubric (clarity, evidence, technical depth, communication, mission fit, accessibility), a real discovery that one of the original findings had quietly recurred, the actual fix, and fresh verification.
 **What I learned from the revision:** catching a problem once and fixing it does not mean it stays fixed. The exact same failure mode (a stale root README) came back on its own as the repo grew, because updating the README was never made a habit, just a one-time cleanup. See Step 8 for the actual lesson going forward.
@@ -15,7 +15,7 @@
 
 ## Step 1: What I collected
 
-- GitHub repo: [github.com/shahramshafiq/PMW-day1](https://github.com/shahramshafiq/PMW-day1)
+- GitHub repo: [github.com/shahramshafiq/preservemy.world-internship](https://github.com/shahramshafiq/preservemy.world-internship)
 - Branches: `main`, `day2-research` (PR #1, opened but not merged)
 - Portfolio: [shahramshafiq-portfolio.vercel.app](https://shahramshafiq-portfolio.vercel.app)
 - README.md, blog post draft, 3D learning scripts, research folder, youthxAI notebook, heritage-api app
@@ -26,7 +26,7 @@
 
 **Prompt used (Strict weekly audit, adapted with real links):**
 
-> Act as a strict PMW program reviewer. Review our Week 1 work: github.com/shahramshafiq/PMW-day1 (main and day2-research branches), portfolio at shahramshafiq-portfolio.vercel.app. Score branding, GitHub setup, clarity, consistency, and mission fit. Give the top 5 fixes ranked by impact.
+> Act as a strict PMW program reviewer. Review our Week 1 work: github.com/shahramshafiq/preservemy.world-internship (main and day2-research branches), portfolio at shahramshafiq-portfolio.vercel.app. Score branding, GitHub setup, clarity, consistency, and mission fit. Give the top 5 fixes ranked by impact.
 
 **Findings, ranked by impact:**
 
@@ -107,7 +107,7 @@ iris-hacks: 0 matches
 shahramshafiq.github.io: 0 matches
 ```
 
-`heritage-api` was still linked, everything from Week 4 onward, including the live final showcase site at `shahramshafiq.github.io/PMW-day1`, the actual capstone deliverable, was completely absent. This is the exact same failure mode as the original finding #2, a README that stopped reflecting the real repo, just recurred later instead of being a one-time problem.
+`heritage-api` was still linked, everything from Week 4 onward, including the live final showcase site at `shahramshafiq.github.io/preservemy.world-internship`, the actual capstone deliverable, was completely absent. This is the exact same failure mode as the original finding #2, a README that stopped reflecting the real repo, just recurred later instead of being a one-time problem.
 
 **The fix:** updated `README.md` directly, not a separate document: added the live showcase link near the top, updated the file tree to include every folder added since Week 3 (`week4-neural-networks/`, `week4-home-story/`, `week4-video-qa-followup/`, `research/source_log_3d_methods.md`, `heritage-api/tests/`, `iris-hacks-interest/`, `index.html`), and wrote full narrative sections for the neural network, the storytelling film, the QA follow-up, all four extension sprints, and Iris Hacks IV, matching the style of the existing sections rather than a bare list.
 
