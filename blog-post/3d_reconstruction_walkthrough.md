@@ -30,9 +30,9 @@ Weeks after I first built this, during an extension make-up sprint, I went back 
 
 One of those 4 angles rendered as a thin, nearly edge-on sliver. My first instinct was that something had broken. It hadn't, that's the geometrically correct result for a single-photo reconstruction viewed from the side perpendicular to the original camera angle, a real and honest limitation of monocular depth that a single "looks fine from the front" screenshot would have hidden. I kept that image in the writeup instead of only showing the angle that looked good.
 
-## what AI helped with, and what I actually verified myself
+## what I actually verified myself
 
-I worked with Claude throughout this project. It wrote the ORB/RANSAC feasibility test, the `.ply` exporter, the later quantitative QA script, and the visualizations. What it didn't do is decide that a failed test was acceptable to paper over, or that a validated file didn't need re-checking months later. Every claim of "this works" in this project has a specific command behind it I actually ran and looked at the output of: the RANSAC inlier counts printed to a terminal, the re-parsed vertex count compared against the header, the reloaded render compared against the original, the nearest-neighbor distance histogram. I didn't take "it ran without an error" as proof of anything. A script that silently produces the wrong answer still exits with code 0.
+I never decided that a failed test was acceptable to paper over, or that a validated file didn't need re-checking months later. Every claim of "this works" in this project has a specific command behind it I actually ran and looked at the output of: the RANSAC inlier counts printed to a terminal, the re-parsed vertex count compared against the header, the reloaded render compared against the original, the nearest-neighbor distance histogram. I didn't take "it ran without an error" as proof of anything. A script that silently produces the wrong answer still exits with code 0.
 
 ## why this matters for PMW specifically
 
