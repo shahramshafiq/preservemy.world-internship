@@ -6,3 +6,13 @@ week4-home-story/source/
 week4-neural-networks/data/
 __pycache__/
 .pytest_cache/
+
+# generated files
+.env
+.venv/
+venv/
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
